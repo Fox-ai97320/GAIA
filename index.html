@@ -388,6 +388,24 @@ radial-gradient(ellipse at 50% 96%,#2368cbaa,transparent 34%),#02071a}
 #home .gaia-v7-input button:first-child{min-width:0}
 #home .gaia-v7-input button:first-child span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 }
+
+/* V23: independently interactive holographic figures and multi-layer starship cockpit */
+#home .gaia-v7-space{background:radial-gradient(ellipse at 50% 47%,#4b159c99,transparent 37%),radial-gradient(ellipse at 50% 17%,#1767bd55,transparent 50%),linear-gradient(135deg,#010719,#071338 45%,#040820 80%,#010613)!important}
+#home .gaia-v7-space:before{background:linear-gradient(115deg,#010716 0 3%,#377bd8 3.5%,#071a3e 5%,transparent 17% 83%,#081936 95%,#377bd8 96.5%,#010716 98%),linear-gradient(180deg,#010716 0 2%,#3a8bff 2.5%,#061b40 4%,transparent 12% 86%,#174a9e 96%,#010716 100%),repeating-linear-gradient(90deg,transparent 0 11%,#2772e122 11.3% 11.6%,transparent 12% 24%)!important}
+#home .gaia-v7-space:after{background:repeating-linear-gradient(90deg,#071128 0 20px,#2254a1 21px 23px,#030a1e 24px 46px),linear-gradient(180deg,#184db8,#050c2a)!important;box-shadow:0 -8px 32px #3388ff55}
+#home .gaia-v7-agent{background:transparent!important;border:0!important;box-shadow:none!important;filter:drop-shadow(0 0 7px var(--agent-color));overflow:visible!important}
+#home .gaia-v7-portrait{position:relative;display:block;width:91%!important;height:68%!important;margin:0 auto 3px;overflow:hidden;border-radius:49% 49% 28% 28%!important;background:radial-gradient(ellipse at 50% 70%,#16316b,#040a24 80%)!important;box-shadow:0 0 0 1px var(--agent-color),0 0 18px var(--agent-color),inset 0 0 14px var(--agent-color)!important;mask-image:linear-gradient(#000 0 79%,transparent 100%);-webkit-mask-image:linear-gradient(#000 0 79%,transparent 100%)}
+#home .gaia-v7-portrait svg{width:100%;height:100%;filter:saturate(1.22) contrast(1.1)}
+#home .gaia-v7-agent:before{content:"";position:absolute;left:7%;right:7%;bottom:11%;height:13%;border:2px solid var(--agent-color);border-radius:50%;background:radial-gradient(ellipse,#ffffff33,transparent 65%);box-shadow:0 0 8px var(--agent-color),0 0 21px var(--agent-color),inset 0 0 12px var(--agent-color);transform:perspective(80px) rotateX(47deg);pointer-events:none}
+#home .gaia-v7-agent:after{content:"";position:absolute;left:16%;right:16%;top:6%;bottom:12%;border-left:1px solid var(--agent-color);border-right:1px solid var(--agent-color);border-radius:50%;opacity:.4;filter:blur(2px);pointer-events:none}
+#home .gaia-v7-agent strong{display:table!important;margin:0 auto 2px!important;padding:2px 9px!important;background:#050a24dd;border:1px solid var(--agent-color);border-radius:20px;box-shadow:0 0 8px var(--agent-color);font-weight:750}
+#home .gaia-v7-agent small{display:table!important;margin:auto!important;max-width:105%;padding:2px 4px!important;background:#02071bcc;border-radius:8px}
+#home .gaia-v7-agent[aria-pressed="true"]{filter:drop-shadow(0 0 16px var(--agent-color)) brightness(1.22);scale:1.05}
+#home .gaia-v7-core{background:radial-gradient(circle at 32% 24%,#e6d0ff,#a744f2 20%,#311584 50%,#06092c 78%)!important}
+#home .gaia-v7-core:before{content:"";position:absolute;inset:-9%;border:2px solid #69f1ff99;border-radius:50%;box-shadow:0 0 24px #8e5fff, inset 0 0 28px #fa6fff;pointer-events:none;animation:gaiaV23Pulse 5s ease-in-out infinite}
+@keyframes gaiaV23Pulse{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:.9;transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){#home .gaia-v7-core:before{animation:none}}
+@media(max-width:550px){#home .gaia-v7-portrait{height:67%!important}#home .gaia-v7-agent:before{bottom:12%}#home .gaia-v7-agent strong{padding:1px 5px!important}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -589,5 +607,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=22",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=23",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
