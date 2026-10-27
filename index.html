@@ -109,7 +109,28 @@ header strong{color:#c9f7ff;text-shadow:0 0 10px #33bfff,0 0 26px #825cff}
 #home .holo-agent .v5-role{font-size:7.5px}
 #home .holo-stage .core{width:144px;height:144px}
 }
-</style></head><body><header><strong>✦ GAIA</strong><span class="tag" id="status">● Mode démonstration</span></header><main class="shell"><nav aria-label="Navigation"><button data-tab="home" class="active">Accueil</button><button data-tab="chat">Assistant</button><button data-tab="agents">Agents</button><button data-tab="settings">Paramètres</button><button data-tab="workspace">Outils V2</button><button data-tab="help">Aide</button></nav>
+</style>
+<script>
+/* Early update guard: runs before the application scripts. */
+(async function(){
+  try{
+    const marker="gaia-v5.2-16530e8";
+    const old=sessionStorage.getItem("gaia_release_marker");
+    if(old!==marker){
+      sessionStorage.setItem("gaia_release_marker",marker);
+      if("serviceWorker" in navigator){
+        const regs=await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.filter(r=>r.scope.includes("/GAIA/")).map(r=>r.unregister()));
+      }
+      if("caches" in window){
+        const names=await caches.keys();
+        await Promise.all(names.filter(n=>n.startsWith("gaia-")).map(n=>caches.delete(n)));
+      }
+    }
+  }catch(e){console.warn("GAIA update guard",e)}
+})();
+</script>
+</head><body><header><strong>✦ GAIA</strong><span class="tag" id="status">● Mode démonstration</span></header><main class="shell"><nav aria-label="Navigation"><button data-tab="home" class="active">Accueil</button><button data-tab="chat">Assistant</button><button data-tab="agents">Agents</button><button data-tab="settings">Paramètres</button><button data-tab="workspace">Outils V2</button><button data-tab="help">Aide</button></nav>
 <section id="home" class="active"><div class="v4-banner"><strong>✦ GAIA V5 · NOVA DECK</strong><span>Centre de commandement holographique</span></div><div class="v5-intro"><div><span class="v5-kicker">✦ INTELLIGENCE ORCHESTRÉE</span><h2>Bienvenue dans GAIA</h2><p>Ton centre de commande IA personnel</p></div><div class="v5-orbit-mini" aria-hidden="true">✦</div></div><div class="v5-scene-title">✦ <strong>HOLOGRAPHIC AGENT DECK</strong> · 8 PROFILS ✦</div><div class="holo-stage" id="holoStage" aria-label="Interface holographique interactive"><div class="core" id="holoCore" role="button" tabindex="0" aria-label="Noyau GAIA, ouvrir assistant"><div class="v5-core-label"><strong>GAIA</strong><span>V5 · NOVA DECK</span></div></div><div id="holoAgents"></div></div><div class="v5-orb-status">✦ 8 agents disponibles · Sélectionne un profil</div><div class="holo-controls"><button id="holoMotion" type="button" aria-pressed="true">⏸ Pause animation</button><p id="holoStatus" role="status">Sélectionne un agent autour de la supernova.</p></div><h1>Tableau de bord GAIA</h1><p style="text-align:center">Votre centre de commande IA, conçu pour évoluer.</p><div class="v5-chatbar"><button type="button" id="v5Talk">🎙 Parler à GAIA</button><button type="button" id="v5Write">⌨ Écrire une demande</button></div><div class="dashboard-grid"><div class="panel"><h3>✦ État du centre de commande</h3><div class="dash-stat">🌐 Serveur : <b id="dashServer">À vérifier</b></div><div class="dash-stat">🧠 Mémoire : <b id="dashMemory">Non activée</b></div><div class="dash-stat">🤖 Profils : <b>8 disponibles</b></div><div class="dash-stat">📋 Tâches enregistrées : <b id="v5TaskCount">0</b></div></div><div class="panel"><h3>⚡ Actions rapides</h3><div class="command-grid"><button type="button" data-quick="chat"><span>💬</span>Discuter</button><button type="button" data-quick="build"><span>💻</span>Créer un site</button><button type="button" data-quick="visual"><span>🎨</span>Visuels</button><button type="button" data-quick="search"><span>🔎</span>Rechercher</button><button type="button" data-quick="file"><span>📄</span>Document</button><button type="button" data-quick="agenda"><span>📅</span>Agenda</button><button type="button" data-quick="team"><span>🤖</span>Agents</button><button type="button" data-quick="memory"><span>🧠</span>Mémoire</button></div></div></div><div class="panel"><h2>Centre de commande</h2><p>Choisissez un agent, puis écrivez ou dictez votre demande. Sans serveur connecté, GAIA fonctionne en démonstration.</p><button data-tab="chat">Ouvrir l'assistant</button></div></section>
 <section id="chat"><h2>Assistant GAIA</h2><p>Agent sélectionné : <b id="selected">GAIA général</b></p><div class="panel"><div id="messages" aria-live="polite"><div class="msg">Bonjour. Je suis GAIA. Sélectionnez un agent ou posez une question. Pour obtenir de véritables réponses IA, connectez un serveur sécurisé dans les paramètres.</div></div><form class="compose" id="chatForm"><input id="prompt" aria-label="Votre message" placeholder="Écrivez votre demande..." required><button type="button" id="mic" title="Dicter">🎙</button><button type="submit">Envoyer</button></form></div><button id="voice">🔊 Voix : activée</button> <button id="wake" type="button" aria-pressed="false">🎙 Activer « Hey GAIA »</button><p id="wakeStatus" role="status">Activation vocale désactivée. Fonctionne uniquement lorsque GAIA est ouverte et que le navigateur autorise le microphone.</p></section>
 <section id="agents"><h2>Agents spécialisés</h2><p>Ces agents sont des profils de conversation. Ils ne travaillent pas seuls en arrière-plan.</p><div class="agents" id="agentList"></div></section>
@@ -207,5 +228,5 @@ $("v5Write").onclick=()=>{document.querySelector('[data-tab="chat"]').click();$(
 function v5UpdateTasks(){try{$("v5TaskCount").textContent=JSON.parse(localStorage.getItem("gaia_v2_tasks")||"[]").length}catch(e){$("v5TaskCount").textContent="—"}}
 document.querySelectorAll('[data-tab="home"]').forEach(b=>b.addEventListener("click",v5UpdateTasks));v5UpdateTasks();
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=52",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
