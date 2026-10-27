@@ -433,6 +433,14 @@ radial-gradient(ellipse at 50% 96%,#2368cbaa,transparent 34%),#02071a}
 #home .gaia-v7-agent:before{height:15%;bottom:10%;background:radial-gradient(ellipse,#d8ffff66,#04205288 65%,transparent 80%)}
 #home .gaia-v7-agent:focus-visible{outline:3px solid #fff!important;outline-offset:4px}
 @media(max-width:550px){#home .gaia-v25-architecture{opacity:.85}}
+
+/* V26 interaction and mobile accessibility polish */
+#home .gaia-v7-nav button.gaia-v26-active{background:linear-gradient(180deg,#1846a9,#0a1a59)!important;border-color:#85d9ff!important;box-shadow:inset 0 0 15px #54baff55,0 0 11px #327cfa88}
+#home .gaia-v7-nav button:focus-visible,#home .gaia-v7-agent:focus-visible,#home .gaia-v7-actions button:focus-visible{outline:3px solid #e6fbff!important;outline-offset:2px}
+#home .gaia-v7-agent[aria-pressed="true"] strong{background:#12418b!important;border-color:#e2faff!important}
+#home .gaia-v7-panel h3{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#home .gaia-v7-panel h3 button{flex-shrink:0}
+@media(max-width:550px){#home .gaia-v7-nav{gap:3px!important}#home .gaia-v7-nav button{padding:6px 2px!important;min-width:0!important}#home .gaia-v7-panel h3{font-size:clamp(13px,3vw,17px)}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -622,9 +630,11 @@ document.querySelectorAll("[data-gaia-agent]").forEach(b=>b.addEventListener("cl
  if(name==="GAIA"){document.querySelector('[data-tab="chat"]').click();return}
  holoSelect(name);
 }));
-document.querySelectorAll("[data-gaia-tab]").forEach(b=>b.addEventListener("click",()=>{
- const t=document.querySelector('[data-tab="'+b.dataset.gaiaTab+'"]');if(t)t.click();else console.warn("GAIA: rubrique indisponible",b.dataset.gaiaTab);
-}));
+const gaiaV26Nav=[...document.querySelectorAll("[data-gaia-tab]")];
+function gaiaV26SyncNav(tab){gaiaV26Nav.forEach(b=>{const active=b.dataset.gaiaTab===tab;b.classList.toggle("gaia-v26-active",active);b.setAttribute("aria-current",active?"page":"false")})}
+gaiaV26SyncNav("home");
+gaiaV26Nav.forEach(b=>b.addEventListener("click",()=>{const name=b.dataset.gaiaTab;const t=document.querySelector('[data-tab="'+name+'"]');if(t){t.click();gaiaV26SyncNav(name)}else console.warn("GAIA: rubrique indisponible",name)}));
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener("click",()=>gaiaV26SyncNav(b.dataset.tab)));
 document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{
  const t=document.querySelector('[data-quick="'+b.dataset.gaiaQuick+'"]');if(t)t.click();else{const tab=document.querySelector('[data-tab="workspace"]');if(tab)tab.click();}
 }));
@@ -634,5 +644,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=25",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=26",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
