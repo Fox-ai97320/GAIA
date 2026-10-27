@@ -406,6 +406,21 @@ radial-gradient(ellipse at 50% 96%,#2368cbaa,transparent 34%),#02071a}
 @keyframes gaiaV23Pulse{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:.9;transform:scale(1.03)}}
 @media(prefers-reduced-motion:reduce){#home .gaia-v7-core:before{animation:none}}
 @media(max-width:550px){#home .gaia-v7-portrait{height:67%!important}#home .gaia-v7-agent:before{bottom:12%}#home .gaia-v7-agent strong{padding:1px 5px!important}}
+
+/* GAIA V24: cockpit architecture, more textured nebula and less obtrusive orbital arcs */
+#home .gaia-v7-space{isolation:isolate;background:radial-gradient(ellipse at 50% 45%,#7e32c255 0%,transparent 39%),radial-gradient(ellipse at 50% 7%,#1683cc45,transparent 47%),linear-gradient(180deg,#010618,#071437 43%,#050a24 76%,#010715)!important}
+#home .gaia-v7-space:before{z-index:0!important;background:linear-gradient(115deg,#010513 0 4%,#215ca5 4.5%,#071a40 6%,transparent 17% 83%,#06173b 94%,#286cc6 95.5%,#010513 97%),linear-gradient(180deg,#020719 0 3%,#4788df 3.5%,#071735 5%,transparent 12% 89%,#2157b7 95%,#020719 98%),repeating-linear-gradient(90deg,transparent 0 12%,#2459ad30 12.3% 12.6%,transparent 13% 24%)!important;box-shadow:inset 0 0 60px #010515,inset 0 0 110px #2461aa66}
+#home .gaia-v13-window{border:2px solid #3677c988!important;background:linear-gradient(145deg,#050f2a88,#071c4255 50%,#010617aa)!important;box-shadow:inset 0 0 30px #3c8aff44,0 0 18px #0d51a844}
+#home .gaia-v13-ceiling{background:linear-gradient(180deg,#010615 0%,#163f82 25%,#071631 35%,transparent 100%)!important;box-shadow:0 3px 18px #2679db66}
+#home .gaia-v13-floor{background:repeating-linear-gradient(95deg,#030b20 0 15px,#0b2455 16px 20px,#030a1d 21px 40px)!important;box-shadow:inset 0 16px 30px #07132c,0 -4px 20px #3989ff55}
+#home .gaia-v7-core{box-shadow:0 0 16px #fff,0 0 38px #e95aff,0 0 75px #604bff!important}
+#home .gaia-v18-orbit{opacity:.36!important;border-width:2px!important;filter:drop-shadow(0 0 5px #6cf7ff)}
+#home .gaia-v7-core-ring{opacity:.55!important;border-width:2px!important}
+#home .gaia-v19-galaxy{filter:saturate(1.45) contrast(1.28)}
+#home .gaia-v7-core button{background:#070e2d88!important;border-radius:24px!important;text-shadow:0 0 10px #fff,0 0 20px #7ddaff!important}
+#home .gaia-v7-agent{transform-origin:center bottom}
+#home .gaia-v7-agent .gaia-v7-portrait{box-shadow:0 0 0 1px var(--agent-color),0 0 12px var(--agent-color),inset 0 0 19px var(--agent-color)!important}
+@media(max-width:550px){#home .gaia-v7-core{width:37%!important}#home .gaia-v7-agent small{max-width:110%}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -607,5 +622,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=23",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=24",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
