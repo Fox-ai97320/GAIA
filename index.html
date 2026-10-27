@@ -201,12 +201,45 @@ body:has(#home.active) main.shell{max-width:1100px;padding:0;margin:0 auto}
 @keyframes v7pulse{50%{filter:brightness(1.3)}}
 #home>.v4-banner,#home>.v5-intro,#home>.v5-cockpit,#home>.v5-scene-title,#home>.holo-stage,#home>.v5-orb-status,#home>.holo-controls,#home>h1,#home>p,#home>.v5-chatbar,#home>.dashboard-grid{display:none!important}
 @media(max-width:550px){#home .gaia-v7-space{height:490px}#home .gaia-v7-core{width:146px;height:146px}#home .gaia-v7-agent{width:83px;min-height:103px;padding:3px}#home .gaia-v7-portrait{width:64px;height:65px}#home .gaia-v7-agent strong{font-size:10px}#home .gaia-v7-agent small{font-size:7px}#home .gaia-v7-logo strong{font-size:20px}#home .gaia-v7-readiness{font-size:8px}#home .gaia-v7-panels{grid-template-columns:1fr 1fr}#home .gaia-v7-panel{padding:6px}#home .gaia-v7-actions{grid-template-columns:repeat(2,1fr)}}
+
+/* GAIA V8: reference-matched character artwork, not a screenshot background */
+#home .gaia-v7-portrait{width:100%;height:100px;overflow:hidden;border-radius:40% 40% 10px 10px;border:0;background:transparent;filter:drop-shadow(0 0 8px var(--agent-color))}
+#home .gaia-v7-portrait svg{display:block;width:100%;height:100%;overflow:hidden}
+#home .gaia-v7-agent{background:linear-gradient(180deg,#0b1641aa 0%,#080b2ddc 68%,#090d2df2);border:1px solid var(--agent-color);border-radius:48% 48% 18px 18px;box-shadow:0 0 15px var(--agent-color),inset 0 0 18px #3d6bff44;min-height:148px;padding:0 4px 9px}
+#home .gaia-v7-agent strong{font-size:13px;text-shadow:0 0 8px var(--agent-color)}
+#home .gaia-v7-agent small{font-size:9px}
+#home .gaia-v7-space{background:radial-gradient(circle at 50% 48%,#a626d977 0%,#29126b88 24%,transparent 48%),radial-gradient(ellipse at 50% 95%,#206aff4d,transparent 40%),radial-gradient(ellipse at 15% 20%,#143c9988,transparent 40%),radial-gradient(ellipse at 85% 18%,#59239c88,transparent 40%),#04091e}
+#home .gaia-v7-core{width:250px;height:250px;background:radial-gradient(circle at 63% 32%,#fff5df 0%,#ff92df 5%,#e934e7 11%,#9a32ff 22%,#1c56d8 42%,#18075e 61%,#050a27 80%);box-shadow:0 0 24px #e9a5ff,0 0 60px #ff48ee,0 0 115px #2c61ff,inset 0 0 48px #ed77ff}
+#home .gaia-v7-core:before,#home .gaia-v7-core:after{inset:27%;border-width:4px;box-shadow:0 0 20px #fa98ff}
+#home .gaia-v7-head{background:linear-gradient(90deg,#040824,#0b1946);box-shadow:inset 0 -8px 25px #1a5de255}
+#home .gaia-v7-panels{background:linear-gradient(180deg,#06152e,#080b27)}
+#home .gaia-v7-panel{box-shadow:inset 0 0 18px #2779f055,0 0 10px #295bca55}
+#home .gaia-v7-nav button{box-shadow:inset 0 0 15px #3974e977,0 0 9px #265cff55}
+#home .gaia-v7-agent-0{left:18%;top:28%}
+#home .gaia-v7-agent-1{left:50%;top:15%}
+#home .gaia-v7-agent-2{left:82%;top:28%}
+#home .gaia-v7-agent-3{left:15%;top:57%}
+#home .gaia-v7-agent-4{left:85%;top:57%}
+#home .gaia-v7-agent-5{left:24%;top:84%}
+#home .gaia-v7-agent-6{left:76%;top:84%}
+@media(max-width:550px){
+#home .gaia-v7-space{height:540px}
+#home .gaia-v7-core{width:165px;height:165px}
+#home .gaia-v7-agent{width:94px;min-height:117px;padding:0 3px 6px}
+#home .gaia-v7-portrait{height:79px}
+#home .gaia-v7-agent strong{font-size:11px}
+#home .gaia-v7-agent small{font-size:8px}
+#home .gaia-v7-agent-0{left:16%;top:28%}
+#home .gaia-v7-agent-2{left:84%;top:28%}
+#home .gaia-v7-agent-3{left:15%;top:57%}
+#home .gaia-v7-agent-4{left:85%;top:57%}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v7-native-interface";
+    const marker="gaia-v8-characters-from-reference";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -338,7 +371,26 @@ document.querySelectorAll('[data-tab="home"]').forEach(b=>b.addEventListener("cl
 
 
 
-document.querySelectorAll(".gaia-v7-portrait").forEach(el=>{const i=Number(el.dataset.v7Portrait);const color=["#60a4ff","#48d6ff","#ffb64c","#df6aff","#fa6ce8","#40f6bb","#ffd16c"][i];const old=[7,1,2,3,4,6,5][i];el.innerHTML=gaiaPortrait(old,color)});
+const gaiaArtFile="./Screenshot_20261027_081626_ChatGPT~2.jpg";
+const gaiaArtCrops=[
+[79,445,145,150],  /* Sentinelle */
+[287,365,135,150], /* Atlas */
+[492,421,145,150], /* Forge */
+[10,688,147,155],  /* Nova */
+[552,691,147,155], /* Pixel */
+[103,946,152,160],/* Sage */
+[461,942,150,160] /* Mercure */
+];
+document.querySelectorAll(".gaia-v7-portrait").forEach(el=>{
+ const i=Number(el.dataset.v7Portrait),p=gaiaArtCrops[i];
+ const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+ svg.setAttribute("viewBox",p.join(" "));svg.setAttribute("preserveAspectRatio","xMidYMid slice");
+ svg.setAttribute("role","img");svg.setAttribute("aria-label","Personnage "+["Sentinelle","Atlas","Forge","Nova","Pixel","Sage","Mercure"][i]);
+ const img=document.createElementNS("http://www.w3.org/2000/svg","image");
+ img.setAttribute("href",gaiaArtFile);img.setAttribute("x","0");img.setAttribute("y","0");img.setAttribute("width","709");img.setAttribute("height","1536");
+ svg.appendChild(img);el.replaceChildren(svg);
+});
+
 const v7Ready=document.getElementById("v7Ready");if(v7Ready){const original=document.getElementById("status");const sync=()=>{v7Ready.textContent=original?original.textContent:"● Statut à vérifier"};sync();new MutationObserver(sync).observe(original,{childList:true,subtree:true,characterData:true})}
 
 /* Native illustrated controls */
