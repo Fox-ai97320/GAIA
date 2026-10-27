@@ -22,6 +22,23 @@ jobs:
         run: |
           grep -q 'GAIA V5 · NOVA DECK' index.html
           grep -q 'v5-core-label' index.html
+      - name: Vérifier JavaScript, images et commandes GAIA
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import re
+          source = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>", source, re.S | re.I)
+          assert scripts, "Scripts absents"
+          for n, code in enumerate(scripts):
+              Path(f"/tmp/gaia-script-{n}.js").write_text(code, encoding="utf-8")
+          for marker in ('data-gaia-agent="Sentinelle"', 'data-gaia-agent="Atlas"', 'data-gaia-agent="Forge"', 'data-gaia-agent="Nova"', 'data-gaia-agent="Pixel"', 'data-gaia-agent="Sage"', 'data-gaia-agent="Mercure"', 'id="chatForm"', 'id="prompt"', 'id="mic"'):
+              assert marker in source, f"Contrôle manquant : {marker}"
+          assert Path("Screenshot_20261027_081626_ChatGPT~2.jpg").is_file(), "Illustration source manquante"
+          print(f"Contrôles présents ; {len(scripts)} scripts à vérifier")
+          PY
+          for f in /tmp/gaia-script-*.js; do node --check "$f"; done
       - uses: actions/configure-pages@v5
         with:
           enablement: true
