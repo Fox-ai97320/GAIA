@@ -509,6 +509,26 @@ linear-gradient(140deg,#071a48aa,#03091966)!important;border-color:#63a8ff!impor
 #home .gaia-v7-panel{min-width:0}
 }
 @media(prefers-reduced-motion:reduce){#home .gaia-v7-core{animation:none!important}}
+
+/* V30: compact responsive dashboard and more tactile accessible controls */
+#home .gaia-v7-panels{gap:10px!important;padding:10px!important}
+#home .gaia-v7-panel{padding:12px!important;border-radius:18px!important}
+#home .gaia-v7-panel h3{font-size:clamp(15px,2.5vw,21px)!important;margin:0 0 10px!important}
+#home .gaia-v7-actions{gap:7px!important}
+#home .gaia-v7-actions button{min-height:66px!important;border-radius:12px!important;transition:transform .16s ease,box-shadow .16s ease}
+#home .gaia-v7-actions button:active{transform:scale(.96)}
+#home .gaia-v7-actions button:focus-visible,#home .gaia-v7-input button:focus-visible{outline:3px solid #fff!important;outline-offset:2px}
+#home .gaia-v9-task{border-bottom:1px solid #427bd355;padding:7px 0}
+#home .gaia-v7-input button{min-height:45px}
+@media(max-width:550px){
+#home .gaia-v7-panels{grid-template-columns:1fr 1fr!important;gap:7px!important;padding:7px!important}
+#home .gaia-v7-panel{padding:9px!important;border-radius:14px!important;min-width:0}
+#home .gaia-v7-panel h3{font-size:clamp(12px,3.3vw,17px)!important;flex-wrap:wrap}
+#home .gaia-v7-actions{gap:5px!important}
+#home .gaia-v7-actions button{min-height:62px!important;padding:5px 2px!important;font-size:clamp(14px,3vw,20px)!important}
+#home .gaia-v7-actions button small{font-size:clamp(9px,2.1vw,12px)!important;line-height:1.2!important}
+#home .gaia-v7-panel p{font-size:clamp(11px,2.4vw,14px)!important}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -603,7 +623,7 @@ document.querySelector(".core").onclick=()=>document.querySelector('[data-tab="w
 /* GAIA V3 holographic selector: visual status only, no false autonomous activity */
 const holoPositions=[[-116,-170],[0,-185],[116,-170],[128,-43],[128,130],[66,195],[-66,195],[-128,130]];
 const holoNames=agents.map(a=>a[0]);
-function holoSelect(name){agent=name;$("selected").textContent=name;document.querySelectorAll(".holo-agent").forEach(b=>b.classList.toggle("active",b.dataset.agent===name));$("holoStatus").textContent=name+" sélectionné · Prêt à recevoir une demande.";document.querySelector('[data-tab="chat"]').click()}
+function holoSelect(name){agent=name;$("selected").textContent=name;document.querySelectorAll(".holo-agent").forEach(b=>b.classList.toggle("active",b.dataset.agent===name));$("holoStatus").textContent=name+" sélectionné · Prêt à recevoir une demande.";document.querySelector('[data-tab="chat"]').click();if(typeof gaiaV26SyncNav==="function")gaiaV26SyncNav("chat")}
 
 function gaiaPortrait(i,color){
 const palettes=[
@@ -678,7 +698,7 @@ function gaiaV9Tasks(){
  const row=document.createElement("div");row.className="gaia-v9-task";
  const dot=document.createElement("i"),label=document.createElement("span"),status=document.createElement("em");
  label.textContent=typeof task==="string"?task:String(task.title||task.text||task.name||"Tâche enregistrée");
- status.textContent=task.done||task.completed?"Terminée":"Enregistrée";row.append(dot,label,status);holder.appendChild(row);
+ status.textContent=task.done||task.completed?"Terminée":"À faire";row.append(dot,label,status);holder.appendChild(row);
  });
 }
 gaiaV9Tasks();window.addEventListener("storage",e=>{if(e.key==="gaia_v2_tasks")gaiaV9Tasks()});document.querySelectorAll('[data-tab="home"]').forEach(b=>b.addEventListener("click",gaiaV9Tasks));
@@ -710,5 +730,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=29",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=30",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
