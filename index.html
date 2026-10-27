@@ -635,14 +635,12 @@ function gaiaV26SyncNav(tab){gaiaV26Nav.forEach(b=>{const active=b.dataset.gaiaT
 gaiaV26SyncNav("home");
 gaiaV26Nav.forEach(b=>b.addEventListener("click",()=>{const name=b.dataset.gaiaTab;const t=document.querySelector('[data-tab="'+name+'"]');if(t){t.click();gaiaV26SyncNav(name)}else console.warn("GAIA: rubrique indisponible",name)}));
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener("click",()=>gaiaV26SyncNav(b.dataset.tab)));
-document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{
- const t=document.querySelector('[data-quick="'+b.dataset.gaiaQuick+'"]');if(t)t.click();else{const tab=document.querySelector('[data-tab="workspace"]');if(tab)tab.click();}
-}));
-document.querySelectorAll("[data-gaia-video]").forEach(b=>b.addEventListener("click",()=>{const t=document.querySelector('[data-tab="chat"]');if(t)t.click();const msg=document.getElementById("holoStatus");if(msg)msg.textContent="Vidéo : génération non configurée. Décris ton projet dans l’assistant.";const notice=document.getElementById("gaiaV22Notice");if(notice){notice.textContent="La génération vidéo n’est pas encore disponible. L’assistant peut préparer ton scénario.";notice.hidden=false;}const field=document.querySelector('#chat textarea, #chat input[type="text"]');if(field&&!field.value){field.value="Je souhaite préparer un projet de vidéo. Quelles options sont disponibles ?";field.dispatchEvent(new Event("input",{bubbles:true}));}}));
+document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{const key=b.dataset.gaiaQuick;const t=document.querySelector('[data-quick="'+key+'"]');if(t){t.click();gaiaV26SyncNav(key==="chat"?"chat":"workspace")}else{const tab=document.querySelector('[data-tab="workspace"]');if(tab){tab.click();gaiaV26SyncNav("workspace")}}}));
+document.querySelectorAll("[data-gaia-video]").forEach(b=>b.addEventListener("click",()=>{const t=document.querySelector('[data-tab="chat"]');if(t){t.click();gaiaV26SyncNav("chat")};const msg=document.getElementById("holoStatus");if(msg)msg.textContent="Vidéo : génération non configurée. Décris ton projet dans l’assistant.";const notice=document.getElementById("gaiaV22Notice");if(notice){notice.textContent="La génération vidéo n’est pas encore disponible. L’assistant peut préparer ton scénario.";notice.hidden=false;}const field=document.getElementById("prompt");if(field&&!field.value){field.value="Je souhaite préparer un projet de vidéo. Quelles options sont disponibles ?";field.dispatchEvent(new Event("input",{bubbles:true}));}if(field)field.focus();}));
 document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("click",()=>{
  document.querySelector('[data-tab="chat"]').click();
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=26",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=27",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
