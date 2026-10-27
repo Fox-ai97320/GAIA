@@ -110,7 +110,7 @@ header strong{color:#c9f7ff;text-shadow:0 0 10px #33bfff,0 0 26px #825cff}
 #home .holo-stage .core{width:144px;height:144px}
 }
 
-/* GAIA V5.3: layered cinematic starship scene and responsive agent portraits */
+/* GAIA V5.4: layered cinematic starship scene and responsive agent portraits */
 #home .holo-stage{background:radial-gradient(ellipse at 50% 45%,#5817b388 0%,transparent 48%),linear-gradient(165deg,#081a3b 0%,#100b36 52%,#061b34 100%);box-shadow:inset 0 0 65px #268fff66,0 0 30px #238eff55}
 #home .holo-stage:after{background:linear-gradient(145deg,transparent 5%,#64d7ff25 8%,transparent 10%,transparent 88%,#9b66ff3d 92%,transparent 95%),repeating-linear-gradient(90deg,transparent 0 52px,#2a9fff1a 53px 54px),repeating-linear-gradient(0deg,transparent 0 64px,#38aaff13 65px 66px)}
 #home .holo-stage .core{background:radial-gradient(circle at 58% 42%,#fff9ce 0%,#ffb8f5 4%,#ff45d9 10%,#5e22e9 26%,#101e84 42%,#11003f 61%,#020824 76%);box-shadow:0 0 15px #fff,0 0 55px #f24aff,0 0 95px #355aff,inset 0 0 32px #ff72df}
@@ -129,12 +129,43 @@ header strong{color:#c9f7ff;text-shadow:0 0 10px #33bfff,0 0 26px #825cff}
 #home .holo-stage .core{width:136px;height:136px}
 .v5-cockpit span{font-size:9px}
 }
+
+/* V5.4 reference-inspired command center: compact mobile cockpit */
+#home .v4-banner{display:none}
+#home .v5-intro{display:none}
+#home .v5-cockpit{margin:0 0 8px}
+#home .v5-scene-title{display:none}
+#home .holo-stage{height:640px;max-width:760px;margin:0 auto;background:radial-gradient(ellipse at 50% 50%,#6c2ac880,transparent 42%),radial-gradient(ellipse at 50% 50%,#11126d,#060b24 75%);border:2px solid #3379e0;box-shadow:inset 0 0 60px #2a8bff66,0 0 30px #327aff33}
+#home .holo-stage .core{width:255px;height:255px;background:radial-gradient(circle at 57% 37%,#fff4e1 0%,#ffbeee 4%,#ff4de3 9%,#7622ff 20%,#0a39d5 39%,#11055e 57%,#040b35 70%);box-shadow:0 0 20px #fff,0 0 65px #f335ff,0 0 115px #347cff,inset 0 0 50px #fa6eff}
+#home .holo-stage .core:before{inset:-28px;border-width:4px}
+#home .holo-stage .core:after{inset:-45px;border-width:3px}
+#home .holo-agent{width:126px;max-width:126px;min-width:126px;border-radius:25px;background:linear-gradient(160deg,#0c1b4bdb,#12052ce8);border:2px solid var(--v5accent);box-shadow:0 0 15px var(--v5accent),inset 0 0 20px #2377ff44}
+#home .holo-agent .v5-avatar{width:100px;height:110px;border-radius:48% 48% 12px 12px}
+#home .holo-agent .v5-name{font-size:14px}
+#home .holo-agent .v5-role{font-size:10px}
+#home .holo-stage:after{background:linear-gradient(90deg,#1c72ff26,transparent 15%,transparent 85%,#e843ff2b),repeating-linear-gradient(90deg,transparent 0 55px,#45a5ff16 56px 57px)}
+#home .v5-orb-status{margin:12px auto}
+#home .dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#home .dashboard-grid .panel{min-width:0}
+#home .command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+#home .v5-chatbar{position:relative;padding:10px;border-radius:24px;background:linear-gradient(100deg,#0a1a49,#210b4e);border:1px solid #44c9ff;box-shadow:0 0 22px #286fff77}
+#home .v5-chatbar button{border-radius:30px}
+@media(max-width:550px){
+#home .holo-stage{height:550px;overflow:hidden}
+#home .holo-stage .core{width:164px;height:164px}
+#home .holo-agent{width:91px;min-width:91px;max-width:91px;padding:4px 2px}
+#home .holo-agent .v5-avatar{width:73px;height:82px}
+#home .holo-agent .v5-name{font-size:11px}
+#home .holo-agent .v5-role{font-size:8px}
+#home .dashboard-grid{grid-template-columns:1fr}
+#home .v5-chatbar{grid-template-columns:1fr 1fr}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v5.3";
+    const marker="gaia-v5.4";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -215,7 +246,7 @@ document.querySelector(".core").onclick=()=>document.querySelector('[data-tab="w
 
 
 /* GAIA V3 holographic selector: visual status only, no false autonomous activity */
-const holoPositions=[[-114,-202],[0,-230],[114,-202],[123,-65],[123,105],[62,230],[-62,230],[-123,105]];
+const holoPositions=[[-116,-170],[0,-185],[116,-170],[128,-43],[128,130],[66,195],[-66,195],[-128,130]];
 const holoNames=agents.map(a=>a[0]);
 function holoSelect(name){agent=name;$("selected").textContent=name;document.querySelectorAll(".holo-agent").forEach(b=>b.classList.toggle("active",b.dataset.agent===name));$("holoStatus").textContent=name+" sélectionné · Prêt à recevoir une demande.";document.querySelector('[data-tab="chat"]').click()}
 
