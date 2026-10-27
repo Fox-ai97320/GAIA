@@ -340,12 +340,41 @@ radial-gradient(ellipse at 50% 96%,#2368cbaa,transparent 34%),#02071a}
 #home .gaia-v7-agent:focus-visible{outline:3px solid #aafaff;outline-offset:3px}
 @keyframes gaiaV19Rotate{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){#home .gaia-v19-galaxy{animation:none}}
+
+/* GAIA V20: mobile alignment, cockpit depth, status integrity and visible interaction */
+#home .gaia-v7-head{background:linear-gradient(110deg,#040923,#0a1d54 53%,#04091d);box-shadow:inset 0 -2px 16px #2b68ff}
+#home .gaia-v7-logo strong{letter-spacing:.10em;text-shadow:0 0 9px #77c8ff,0 0 24px #2a77ff}
+#home .gaia-v7-nav button{transition:filter .2s,transform .2s}
+#home .gaia-v7-nav button:focus-visible,#home .gaia-v7-actions button:focus-visible,#home .gaia-v7-input button:focus-visible{outline:3px solid #80e8ff;outline-offset:2px}
+#home .gaia-v7-space:before{background:linear-gradient(110deg,#040b20 0 3%,#2865c6 4%,#081b42 6%,transparent 16% 84%,#07163a 94%,#3277db 96%,#040b20 98%),linear-gradient(180deg,#04091d 0 2%,#2b6cc6 3%,transparent 9% 91%,#2252aa 96%,#04091d 99%)}
+#home .gaia-v7-core{top:49%;width:40%;box-shadow:0 0 14px #fff,0 0 43px #e855ff,0 0 90px #317dff,0 0 130px #ac38ff!important}
+#home .gaia-v7-agent{min-height:0!important}
+#home .gaia-v7-portrait{height:73%!important}
+#home .gaia-v7-agent:after{pointer-events:none}
+#home .gaia-v7-agent[aria-pressed="true"]{filter:drop-shadow(0 0 20px var(--agent-color)) brightness(1.14)}
+#home .gaia-v7-panel{min-width:0;overflow:hidden}
+#home .gaia-v7-input{position:relative;z-index:5}
+#home .gaia-v7-input .gaia-v7-mic{min-width:55px;min-height:55px}
+@media(max-width:550px){
+#home .gaia-v7-space{aspect-ratio:823/850}
+#home .gaia-v7-agent{height:22%!important}
+#home .gaia-v7-agent-0{top:27%}
+#home .gaia-v7-agent-1{top:16%}
+#home .gaia-v7-agent-2{top:27%}
+#home .gaia-v7-agent-3,#home .gaia-v7-agent-4{top:56%}
+#home .gaia-v7-agent-5,#home .gaia-v7-agent-6{top:84%}
+#home .gaia-v7-core{top:49%;width:40%}
+#home .gaia-v7-agent strong{font-size:clamp(10px,2.6vw,13px)}
+#home .gaia-v7-agent small{font-size:clamp(7px,1.7vw,10px)}
+#home .gaia-v7-panel{min-height:180px}
+#home .gaia-v7-actions button{min-height:48px}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v19-vector-nebula";
+    const marker="gaia-v20-mobile-qa";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -522,7 +551,7 @@ const gaiaV13Clock=document.getElementById("gaiaV13Clock");
 function gaiaV13SetClock(){if(gaiaV13Clock){gaiaV13Clock.textContent=new Intl.DateTimeFormat("fr-FR",{hour:"2-digit",minute:"2-digit"}).format(new Date())}}
 gaiaV13SetClock();document.addEventListener("visibilitychange",gaiaV13SetClock);
 
-document.querySelectorAll("#home .gaia-v7-agent").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#home .gaia-v7-agent").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));}));
+document.querySelectorAll("#home .gaia-v7-agent").forEach(b=>{b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{document.querySelectorAll("#home .gaia-v7-agent").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));});});
 /* Native illustrated controls */
 document.querySelectorAll("[data-gaia-agent]").forEach(b=>b.addEventListener("click",()=>{
  const name=b.dataset.gaiaAgent;
@@ -530,7 +559,7 @@ document.querySelectorAll("[data-gaia-agent]").forEach(b=>b.addEventListener("cl
  holoSelect(name);
 }));
 document.querySelectorAll("[data-gaia-tab]").forEach(b=>b.addEventListener("click",()=>{
- const t=document.querySelector('[data-tab="'+b.dataset.gaiaTab+'"]');if(t)t.click();
+ const t=document.querySelector('[data-tab="'+b.dataset.gaiaTab+'"]');if(t)t.click();else console.warn("GAIA: rubrique indisponible",b.dataset.gaiaTab);
 }));
 document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{
  const t=document.querySelector('[data-quick="'+b.dataset.gaiaQuick+'"]');if(t)t.click();else{const tab=document.querySelector('[data-tab="workspace"]');if(tab)tab.click();}
@@ -540,5 +569,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=19",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=20",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
