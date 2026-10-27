@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Vérifier que GAIA V4.1 est incluse
+      - name: Vérifier que GAIA V5 est incluse
         run: |
-          grep -q 'GAIA V4 · NOVA DECK' index.html
-          grep -q 'command-grid' index.html
+          grep -q 'GAIA V5 · NOVA DECK' index.html
+          grep -q 'v5-core-label' index.html
       - uses: actions/configure-pages@v5
         with:
           enablement: true
