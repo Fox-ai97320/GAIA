@@ -610,6 +610,20 @@ box-shadow:0 0 8px #fff,0 0 28px #ff8fff,0 0 60px #c837ff,0 0 100px #2b79ff,inse
 #home .gaia-v7-input>.gaia-v34-write{font-size:clamp(11px,2.9vw,16px)!important}
 #home .gaia-v34-write small{font-size:clamp(9px,2vw,12px)!important}
 }
+
+/* V35 Android performance optimization: preserve scene and interactivity */
+@media(max-width:550px){
+#home .gaia-v19-galaxy{filter:none!important;opacity:.55!important}
+#home .gaia-v28-spiral{filter:drop-shadow(0 0 4px #a963ff)!important}
+#home .gaia-v7-core{box-shadow:0 0 12px #ffbaff,0 0 28px #a43aff,0 0 52px #365aff!important}
+#home .gaia-v7-agent{filter:drop-shadow(0 0 5px var(--agent-color))!important}
+#home .gaia-v7-portrait{box-shadow:0 0 10px var(--agent-color)!important}
+#home .gaia-v25-architecture{filter:none!important}
+#home .gaia-v7-panels{contain:layout style}
+}
+@media(prefers-reduced-motion:reduce){
+#home .gaia-v7-stars,#home .gaia-v7-core,#home .gaia-v28-spiral,#home .gaia-v34-wave{animation:none!important}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -811,5 +825,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=34",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=35",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
