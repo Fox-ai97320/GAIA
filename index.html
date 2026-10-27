@@ -547,6 +547,26 @@ linear-gradient(140deg,#071a48aa,#03091966)!important;border-color:#63a8ff!impor
 #home .gaia-v7-space{height:730px!important}
 #home .gaia-v7-core{width:40%!important}
 }
+
+/* V32 critical fix: prevent cockpit intrinsic SVG width from expanding mobile layout */
+#home .gaia-v7-shell,#home .gaia-v7-space{box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important}
+#home .gaia-v7-space{display:block!important;contain:layout paint!important;overflow:hidden!important}
+#home .gaia-v25-architecture{width:100%!important;max-width:100%!important;min-width:0!important}
+#home .gaia-v7-core{left:50%!important;right:auto!important;transform:translate(-50%,-50%)!important}
+#home .gaia-v7-agent{right:auto!important;transform:translate(-50%,-50%)!important}
+@media(max-width:550px){
+#home .gaia-v7-shell{width:100vw!important;max-width:100%!important;margin-inline:auto!important}
+#home .gaia-v7-space{height:auto!important;aspect-ratio:823/850!important;max-height:calc(100vw * 850 / 823)!important}
+#home .gaia-v7-core{width:35%!important;top:48%!important}
+#home .gaia-v7-agent{width:18%!important;height:22%!important}
+#home .gaia-v7-agent-0{left:19%!important;top:28%!important}
+#home .gaia-v7-agent-1{left:50%!important;top:16%!important}
+#home .gaia-v7-agent-2{left:81%!important;top:28%!important}
+#home .gaia-v7-agent-3{left:15%!important;top:56%!important}
+#home .gaia-v7-agent-4{left:85%!important;top:56%!important}
+#home .gaia-v7-agent-5{left:25%!important;top:83%!important}
+#home .gaia-v7-agent-6{left:75%!important;top:83%!important}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -748,5 +768,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=31",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=32",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
