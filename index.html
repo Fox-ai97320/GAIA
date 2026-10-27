@@ -160,12 +160,21 @@ header strong{color:#c9f7ff;text-shadow:0 0 10px #33bfff,0 0 26px #825cff}
 #home .dashboard-grid{grid-template-columns:1fr}
 #home .v5-chatbar{grid-template-columns:1fr 1fr}
 }
+
+/* GAIA V6 — uploaded reference illustration is the actual interface surface */
+#home>.gaia-reference-scene{position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:709/1350;overflow:hidden;border-radius:12px;background:#050719;box-shadow:0 0 24px #1d75ff77;isolation:isolate}
+#home .gaia-reference-art{position:absolute;inset:0;background-image:url("./Screenshot_20261027_081626_ChatGPT~2.jpg?v=6");background-repeat:no-repeat;background-position:center center;background-size:100% 113.8%;pointer-events:none}
+#home .gaia-hotspot{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);transform:translate(-50%,-50%);border:1px solid transparent;background:transparent;border-radius:16px;cursor:pointer;z-index:2;color:transparent;padding:0;touch-action:manipulation}
+#home .gaia-hotspot:hover,#home .gaia-hotspot:focus-visible{outline:2px solid #8ceeff;outline-offset:-2px;background:#37bfff25;box-shadow:0 0 18px #47bfff}
+#home>.gaia-reference-note{max-width:760px;margin:8px auto 18px;text-align:center;font-size:11px;color:#93b3da}
+#home>.v4-banner,#home>.v5-intro,#home>.v5-cockpit,#home>.v5-scene-title,#home>.holo-stage,#home>.v5-orb-status,#home>.holo-controls,#home>h1,#home>p,#home>.v5-chatbar,#home>.dashboard-grid{display:none!important}
+@media(max-width:550px){main.shell{padding-left:4px;padding-right:4px}#home>.gaia-reference-scene{border-radius:4px}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v5.4";
+    const marker="gaia-v6-reference-image";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -182,7 +191,33 @@ header strong{color:#c9f7ff;text-shadow:0 0 10px #33bfff,0 0 26px #825cff}
 })();
 </script>
 </head><body><header><strong>✦ GAIA</strong><span class="tag" id="status">● Mode démonstration</span></header><main class="shell"><nav aria-label="Navigation"><button data-tab="home" class="active">Accueil</button><button data-tab="chat">Assistant</button><button data-tab="agents">Agents</button><button data-tab="settings">Paramètres</button><button data-tab="workspace">Outils V2</button><button data-tab="help">Aide</button></nav>
-<section id="home" class="active"><div class="v4-banner"><strong>✦ GAIA V5 · NOVA DECK</strong><span>Centre de commandement holographique</span></div><div class="v5-intro"><div><span class="v5-kicker">✦ INTELLIGENCE ORCHESTRÉE</span><h2>Bienvenue dans GAIA</h2><p>Ton centre de commande IA personnel</p></div><div class="v5-orbit-mini" aria-hidden="true">✦</div></div><div class="v5-cockpit"><span>◉ <b>GAIA V5.3</b><br>Centre spatial</span><span>✦ <b>8 profils</b><br>Agents interactifs</span><span>◇ <b>Mode IA</b><br>Selon connexion</span></div><div class="v5-scene-title">✦ <strong>HOLOGRAPHIC AGENT DECK</strong> · 8 PROFILS ✦</div><div class="holo-stage" id="holoStage" aria-label="Interface holographique interactive"><div class="core" id="holoCore" role="button" tabindex="0" aria-label="Noyau GAIA, ouvrir assistant"><div class="v5-core-label"><strong>GAIA</strong><span>V5 · NOVA DECK</span></div></div><div id="holoAgents"></div></div><div class="v5-orb-status">✦ 8 agents disponibles · Sélectionne un profil</div><div class="holo-controls"><button id="holoMotion" type="button" aria-pressed="true">⏸ Pause animation</button><p id="holoStatus" role="status">Sélectionne un agent autour de la supernova.</p></div><h1>Tableau de bord GAIA</h1><p style="text-align:center">Votre centre de commande IA, conçu pour évoluer.</p><div class="v5-chatbar"><button type="button" id="v5Talk">🎙 Parler à GAIA</button><button type="button" id="v5Write">⌨ Écrire une demande</button></div><div class="dashboard-grid"><div class="panel"><h3>✦ État du centre de commande</h3><div class="dash-stat">🌐 Serveur : <b id="dashServer">À vérifier</b></div><div class="dash-stat">🧠 Mémoire : <b id="dashMemory">Non activée</b></div><div class="dash-stat">🤖 Profils : <b>8 disponibles</b></div><div class="dash-stat">📋 Tâches enregistrées : <b id="v5TaskCount">0</b></div></div><div class="panel"><h3>⚡ Actions rapides</h3><div class="command-grid"><button type="button" data-quick="chat"><span>💬</span>Discuter</button><button type="button" data-quick="build"><span>💻</span>Créer un site</button><button type="button" data-quick="visual"><span>🎨</span>Visuels</button><button type="button" data-quick="search"><span>🔎</span>Rechercher</button><button type="button" data-quick="file"><span>📄</span>Document</button><button type="button" data-quick="agenda"><span>📅</span>Agenda</button><button type="button" data-quick="team"><span>🤖</span>Agents</button><button type="button" data-quick="memory"><span>🧠</span>Mémoire</button></div></div></div><div class="panel"><h2>Centre de commande</h2><p>Choisissez un agent, puis écrivez ou dictez votre demande. Sans serveur connecté, GAIA fonctionne en démonstration.</p><button data-tab="chat">Ouvrir l'assistant</button></div></section>
+<section id="home" class="active"><div class="gaia-reference-scene" aria-label="Centre de commande GAIA illustré, interactif">
+<div class="gaia-reference-art" role="img" aria-label="Vaisseau spatial, supernova et huit agents illustrés"></div>
+<button class="gaia-hotspot" style="--x:49%;--y:26%;--w:23%;--h:13%" data-gaia-agent="Atlas" aria-label="Choisir Atlas, recherche"></button>
+<button class="gaia-hotspot" style="--x:19%;--y:29%;--w:24%;--h:13%" data-gaia-agent="Sentinelle" aria-label="Choisir Sentinelle, sécurité"></button>
+<button class="gaia-hotspot" style="--x:81%;--y:29%;--w:24%;--h:13%" data-gaia-agent="Forge" aria-label="Choisir Forge, développement"></button>
+<button class="gaia-hotspot" style="--x:16%;--y:44%;--w:25%;--h:13%" data-gaia-agent="Nova" aria-label="Choisir Nova, idées"></button>
+<button class="gaia-hotspot" style="--x:84%;--y:44%;--w:25%;--h:13%" data-gaia-agent="Pixel" aria-label="Choisir Pixel, images"></button>
+<button class="gaia-hotspot" style="--x:22%;--y:60%;--w:25%;--h:13%" data-gaia-agent="Sage" aria-label="Choisir Sage, mémoire"></button>
+<button class="gaia-hotspot" style="--x:78%;--y:60%;--w:25%;--h:13%" data-gaia-agent="Mercure" aria-label="Choisir Mercure, tâches"></button>
+<button class="gaia-hotspot" style="--x:50%;--y:48%;--w:31%;--h:19%" data-gaia-agent="GAIA" aria-label="Ouvrir l'assistant GAIA"></button>
+<button class="gaia-hotspot" style="--x:24%;--y:8%;--w:16%;--h:6%" data-gaia-tab="home" aria-label="Accueil"></button>
+<button class="gaia-hotspot" style="--x:38%;--y:8%;--w:15%;--h:6%" data-gaia-tab="chat" aria-label="Assistant"></button>
+<button class="gaia-hotspot" style="--x:53%;--y:8%;--w:14%;--h:6%" data-gaia-tab="agents" aria-label="Agents"></button>
+<button class="gaia-hotspot" style="--x:68%;--y:8%;--w:15%;--h:6%" data-gaia-tab="workspace" aria-label="Outils"></button>
+<button class="gaia-hotspot" style="--x:82%;--y:8%;--w:15%;--h:6%" data-gaia-tab="settings" aria-label="Paramètres"></button>
+<button class="gaia-hotspot" style="--x:94%;--y:8%;--w:11%;--h:6%" data-gaia-tab="help" aria-label="Aide"></button>
+<button class="gaia-hotspot" style="--x:17%;--y:76%;--w:24%;--h:6%" data-gaia-tab="workspace" aria-label="Tâches en cours"></button>
+<button class="gaia-hotspot" style="--x:59%;--y:77%;--w:15%;--h:7%" data-gaia-quick="chat" aria-label="Discuter"></button>
+<button class="gaia-hotspot" style="--x:76%;--y:77%;--w:15%;--h:7%" data-gaia-quick="build" aria-label="Créer un site"></button>
+<button class="gaia-hotspot" style="--x:91%;--y:77%;--w:14%;--h:7%" data-gaia-quick="visual" aria-label="Générer image"></button>
+<button class="gaia-hotspot" style="--x:59%;--y:84%;--w:15%;--h:7%" data-gaia-quick="search" aria-label="Rechercher"></button>
+<button class="gaia-hotspot" style="--x:76%;--y:84%;--w:15%;--h:7%" data-gaia-quick="file" aria-label="Analyser fichier"></button>
+<button class="gaia-hotspot" style="--x:91%;--y:84%;--w:14%;--h:7%" data-gaia-quick="agenda" aria-label="Agenda"></button>
+<button class="gaia-hotspot" style="--x:50%;--y:94%;--w:20%;--h:8%" data-gaia-voice="1" aria-label="Parler à GAIA"></button>
+<button class="gaia-hotspot" style="--x:25%;--y:94%;--w:23%;--h:8%" data-gaia-tab="chat" aria-label="Écrire à GAIA"></button>
+<button class="gaia-hotspot" style="--x:89%;--y:94%;--w:18%;--h:8%" data-gaia-tab="settings" aria-label="Paramètres vocaux"></button>
+</div><div class="gaia-reference-note">Illustration de référence · Les agents et commandes sont cliquables. Les états affichés dans l'image sont décoratifs.</div><div class="v4-banner"><strong>✦ GAIA V5 · NOVA DECK</strong><span>Centre de commandement holographique</span></div><div class="v5-intro"><div><span class="v5-kicker">✦ INTELLIGENCE ORCHESTRÉE</span><h2>Bienvenue dans GAIA</h2><p>Ton centre de commande IA personnel</p></div><div class="v5-orbit-mini" aria-hidden="true">✦</div></div><div class="v5-cockpit"><span>◉ <b>GAIA V5.3</b><br>Centre spatial</span><span>✦ <b>8 profils</b><br>Agents interactifs</span><span>◇ <b>Mode IA</b><br>Selon connexion</span></div><div class="v5-scene-title">✦ <strong>HOLOGRAPHIC AGENT DECK</strong> · 8 PROFILS ✦</div><div class="holo-stage" id="holoStage" aria-label="Interface holographique interactive"><div class="core" id="holoCore" role="button" tabindex="0" aria-label="Noyau GAIA, ouvrir assistant"><div class="v5-core-label"><strong>GAIA</strong><span>V5 · NOVA DECK</span></div></div><div id="holoAgents"></div></div><div class="v5-orb-status">✦ 8 agents disponibles · Sélectionne un profil</div><div class="holo-controls"><button id="holoMotion" type="button" aria-pressed="true">⏸ Pause animation</button><p id="holoStatus" role="status">Sélectionne un agent autour de la supernova.</p></div><h1>Tableau de bord GAIA</h1><p style="text-align:center">Votre centre de commande IA, conçu pour évoluer.</p><div class="v5-chatbar"><button type="button" id="v5Talk">🎙 Parler à GAIA</button><button type="button" id="v5Write">⌨ Écrire une demande</button></div><div class="dashboard-grid"><div class="panel"><h3>✦ État du centre de commande</h3><div class="dash-stat">🌐 Serveur : <b id="dashServer">À vérifier</b></div><div class="dash-stat">🧠 Mémoire : <b id="dashMemory">Non activée</b></div><div class="dash-stat">🤖 Profils : <b>8 disponibles</b></div><div class="dash-stat">📋 Tâches enregistrées : <b id="v5TaskCount">0</b></div></div><div class="panel"><h3>⚡ Actions rapides</h3><div class="command-grid"><button type="button" data-quick="chat"><span>💬</span>Discuter</button><button type="button" data-quick="build"><span>💻</span>Créer un site</button><button type="button" data-quick="visual"><span>🎨</span>Visuels</button><button type="button" data-quick="search"><span>🔎</span>Rechercher</button><button type="button" data-quick="file"><span>📄</span>Document</button><button type="button" data-quick="agenda"><span>📅</span>Agenda</button><button type="button" data-quick="team"><span>🤖</span>Agents</button><button type="button" data-quick="memory"><span>🧠</span>Mémoire</button></div></div></div><div class="panel"><h2>Centre de commande</h2><p>Choisissez un agent, puis écrivez ou dictez votre demande. Sans serveur connecté, GAIA fonctionne en démonstration.</p><button data-tab="chat">Ouvrir l'assistant</button></div></section>
 <section id="chat"><h2>Assistant GAIA</h2><p>Agent sélectionné : <b id="selected">GAIA général</b></p><div class="panel"><div id="messages" aria-live="polite"><div class="msg">Bonjour. Je suis GAIA. Sélectionnez un agent ou posez une question. Pour obtenir de véritables réponses IA, connectez un serveur sécurisé dans les paramètres.</div></div><form class="compose" id="chatForm"><input id="prompt" aria-label="Votre message" placeholder="Écrivez votre demande..." required><button type="button" id="mic" title="Dicter">🎙</button><button type="submit">Envoyer</button></form></div><button id="voice">🔊 Voix : activée</button> <button id="wake" type="button" aria-pressed="false">🎙 Activer « Hey GAIA »</button><p id="wakeStatus" role="status">Activation vocale désactivée. Fonctionne uniquement lorsque GAIA est ouverte et que le navigateur autorise le microphone.</p></section>
 <section id="agents"><h2>Agents spécialisés</h2><p>Ces agents sont des profils de conversation. Ils ne travaillent pas seuls en arrière-plan.</p><div class="agents" id="agentList"></div></section>
 <section id="settings"><h2>Paramètres</h2><div class="panel"><label for="endpoint">URL HTTPS de votre serveur IA sécurisé</label><input id="endpoint" placeholder="https://votre-serveur.example/api/chat" autocomplete="off"><p>Le serveur doit accepter POST JSON {message, agent} et renvoyer {reply}. Ne saisissez jamais une clé API secrète ici : ce site est public.</p><button id="save">Enregistrer sur cet appareil</button><button id="clear">Effacer les paramètres</button></div></section>
@@ -288,6 +323,24 @@ $("v5Talk").onclick=()=>{document.querySelector('[data-tab="chat"]').click();$("
 $("v5Write").onclick=()=>{document.querySelector('[data-tab="chat"]').click();$("prompt").focus()};
 function v5UpdateTasks(){try{$("v5TaskCount").textContent=JSON.parse(localStorage.getItem("gaia_v2_tasks")||"[]").length}catch(e){$("v5TaskCount").textContent="—"}}
 document.querySelectorAll('[data-tab="home"]').forEach(b=>b.addEventListener("click",v5UpdateTasks));v5UpdateTasks();
+
+
+/* The illustrated controls are real HTML buttons layered over the supplied artwork. */
+document.querySelectorAll("[data-gaia-agent]").forEach(b=>b.addEventListener("click",()=>{
+ const name=b.dataset.gaiaAgent;
+ if(name==="GAIA"){document.querySelector('[data-tab="chat"]').click();return}
+ holoSelect(name);
+}));
+document.querySelectorAll("[data-gaia-tab]").forEach(b=>b.addEventListener("click",()=>{
+ const t=document.querySelector('[data-tab="'+b.dataset.gaiaTab+'"]');if(t)t.click();
+}));
+document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{
+ const t=document.querySelector('[data-quick="'+b.dataset.gaiaQuick+'"]');if(t)t.click();
+}));
+document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelector('[data-tab="chat"]').click();
+ const mic=document.getElementById("mic");if(mic)mic.click();
+}));
 
 if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=52",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
