@@ -23,3 +23,6 @@ Alternative développeur avec Wrangler : depuis le dossier `worker`, lancer `npx
 - Les huit agents sont des **profils de prompt**, pas des agents autonomes.
 - Les conversations ne sont pas stockées par ce Worker, mais sont transmises au service de modèle Cloudflare ; ne pas envoyer de données sensibles.
 - Les fonctionnalités de recherche web, génération vidéo, contrôle PC, revenus et auto-amélioration ne sont pas implémentées.
+
+
+<!-- Cloudflare Git integration: production deployment trigger, 2026-10-26. -->
