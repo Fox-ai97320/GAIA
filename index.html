@@ -284,12 +284,51 @@ body:has(#home.active) main.shell{max-width:900px;padding:0;margin:0 auto}
 #home .gaia-v7-nav button:active,#home .gaia-v7-actions button:active{filter:brightness(1.4);transform:scale(.97)}
 @keyframes gaiaRing{from{rotate:0deg}to{rotate:360deg}}
 @media(prefers-reduced-motion:reduce){#home .gaia-v7-core-ring{animation:none}}
+
+/* V18 native visual and behavior fixes: layered animated nebula, hologram pedestals, responsive controls */
+#home .gaia-v7-core{overflow:visible;background:
+radial-gradient(circle at 60% 28%,#fff 0%,#ffabf3 3%,#ff39e6 7%,transparent 17%),
+radial-gradient(ellipse at 33% 64%,#317dff 0%,transparent 38%),
+radial-gradient(ellipse at 68% 42%,#ff4de2 0%,transparent 35%),
+radial-gradient(circle at 50% 50%,#a439ff,#33169b 46%,#050c3c 75%);
+box-shadow:0 0 9px #fff,0 0 38px #f14cff,0 0 75px #307dff,0 0 125px #ac42ff,inset 0 0 32px #fca7ff}
+#home .gaia-v18-nebula{position:absolute;inset:3%;border-radius:50%;overflow:hidden;pointer-events:none;opacity:.9;background:
+repeating-conic-gradient(from 12deg at 54% 42%,transparent 0 9deg,#ff9bf327 11deg 13deg,transparent 15deg 25deg,#4ebcff36 26deg 28deg,transparent 30deg 39deg),
+radial-gradient(ellipse at 68% 30%,#ffe2f4 0%,#f96fe1 4%,transparent 24%),
+radial-gradient(ellipse at 29% 64%,#42baff 0%,transparent 35%);
+mix-blend-mode:screen;animation:gaiaV18Swirl 35s linear infinite}
+#home .gaia-v18-stars{position:absolute;inset:5%;border-radius:50%;pointer-events:none;background-image:
+radial-gradient(1px 1px at 21% 23%,white 99%,transparent),
+radial-gradient(2px 2px at 65% 45%,white 99%,transparent),
+radial-gradient(1px 1px at 41% 72%,#f9baff 99%,transparent),
+radial-gradient(2px 2px at 81% 77%,#8deaff 99%,transparent);
+background-size:37px 49px;opacity:.8;animation:gaiaStars 5s ease-in-out infinite alternate}
+#home .gaia-v18-orbit{position:absolute;inset:-12%;border:3px solid #ff98ec;border-radius:50%;pointer-events:none;transform:rotate(-24deg) scaleY(.35);box-shadow:0 0 13px #fff,0 0 28px #f746f9}
+#home .gaia-v18-orbit-b{inset:-6%;border-color:#4bdcff;transform:rotate(46deg) scaleY(.48);box-shadow:0 0 13px #6ee7ff,0 0 24px #287eff}
+#home .gaia-v7-core button{z-index:3}
+#home .gaia-v7-agent{overflow:visible!important;background:transparent!important;border-radius:0!important;box-shadow:none!important}
+#home .gaia-v7-agent:after{top:70%;height:20%;border:2px solid var(--agent-color);border-radius:50%;background:radial-gradient(ellipse,#1a245d,#030924 74%);box-shadow:0 0 11px var(--agent-color),0 0 23px var(--agent-color),inset 0 0 10px var(--agent-color)}
+#home .gaia-v7-portrait{border-radius:45% 45% 0 0!important;filter:drop-shadow(0 0 12px var(--agent-color))}
+#home .gaia-v7-agent strong{z-index:2;margin-top:0;background:#030b27cc;border-radius:10px;padding:2px 5px}
+#home .gaia-v7-agent small{z-index:2;background:#030b27bb;border-radius:7px;padding:1px 3px}
+#home .gaia-v7-space{background:
+radial-gradient(ellipse at 50% 51%,#8f24d97e,transparent 41%),
+radial-gradient(ellipse at 14% 17%,#2556c5b0,transparent 36%),
+radial-gradient(ellipse at 86% 20%,#873dbba0,transparent 35%),
+radial-gradient(ellipse at 50% 96%,#2368cbaa,transparent 34%),#02071a}
+#home .gaia-v7-panels{position:relative;z-index:5}
+#home .gaia-v7-panel{display:block!important}
+#home .gaia-v7-actions button{transition:transform .16s,box-shadow .16s}
+#home .gaia-v7-actions button:active{transform:scale(.94);box-shadow:0 0 18px #5aafff}
+@keyframes gaiaV18Swirl{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#home .gaia-v18-nebula,#home .gaia-v18-stars{animation:none}}
+@media(max-width:550px){#home .gaia-v7-core{width:37%}#home .gaia-v7-agent{height:22%}#home .gaia-v7-portrait{height:74%}#home .gaia-v7-panel{min-height:185px}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v17-real-interactive-components";
+    const marker="gaia-v18-nebula-fixes";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -309,7 +348,7 @@ body:has(#home.active) main.shell{max-width:900px;padding:0;margin:0 auto}
 <section id="home" class="active"><div class="gaia-v7-shell">
 <div class="gaia-v7-head"><div class="gaia-v7-logo"><span class="gaia-v7-mark">✧</span><div><strong>G A I A</strong><small>ASSISTANT IA PERSONNEL</small></div></div><div class="gaia-v7-readiness"><time id="gaiaV13Clock" aria-label="Heure locale"></time><span id="v7Ready">● Statut du serveur : vérification</span><small>7 agents spécialisés + GAIA</small></div></div>
 <div class="gaia-v7-nav"><button data-gaia-tab="home">⌂<small>Accueil</small></button><button data-gaia-tab="chat">◉<small>Assistant</small></button><button data-gaia-tab="agents">♧<small>Agents</small></button><button data-gaia-tab="workspace">▦<small>Outils</small></button><button data-gaia-tab="settings">⚙<small>Paramètres</small></button><button data-gaia-tab="help">?<small>Aide</small></button></div>
-<div class="gaia-v7-space"><div class="gaia-v13-window gaia-v13-window-left"></div><div class="gaia-v13-window gaia-v13-window-right"></div><div class="gaia-v13-ceiling"></div><div class="gaia-v13-floor"></div><div class="gaia-v7-stars"></div><div class="gaia-v7-beam"></div><div class="gaia-v7-core"><span class="gaia-v7-core-ring"></span><button data-gaia-agent="GAIA" aria-label="Ouvrir GAIA"><strong>G A I A</strong><small>Centre de commande</small></button></div><button type="button" class="gaia-v7-agent gaia-v7-agent-0" data-gaia-agent="Sentinelle"><span class="gaia-v7-portrait" data-v7-portrait="0"></span><strong>Sentinelle</strong><small>Sécurité & vérification</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-1" data-gaia-agent="Atlas"><span class="gaia-v7-portrait" data-v7-portrait="1"></span><strong>Atlas</strong><small>Recherche & analyse</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-2" data-gaia-agent="Forge"><span class="gaia-v7-portrait" data-v7-portrait="2"></span><strong>Forge</strong><small>Sites & applications</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-3" data-gaia-agent="Nova"><span class="gaia-v7-portrait" data-v7-portrait="3"></span><strong>Nova</strong><small>Stratégie & idées</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-4" data-gaia-agent="Pixel"><span class="gaia-v7-portrait" data-v7-portrait="4"></span><strong>Pixel</strong><small>Images & visuels</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-5" data-gaia-agent="Sage"><span class="gaia-v7-portrait" data-v7-portrait="5"></span><strong>Sage</strong><small>Mémoire & savoir</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-6" data-gaia-agent="Mercure"><span class="gaia-v7-portrait" data-v7-portrait="6"></span><strong>Mercure</strong><small>Tâches & projets</small></button></div>
+<div class="gaia-v7-space"><div class="gaia-v13-window gaia-v13-window-left"></div><div class="gaia-v13-window gaia-v13-window-right"></div><div class="gaia-v13-ceiling"></div><div class="gaia-v13-floor"></div><div class="gaia-v7-stars"></div><div class="gaia-v7-beam"></div><div class="gaia-v7-core"><span class="gaia-v18-nebula"></span><span class="gaia-v18-stars"></span><span class="gaia-v18-orbit gaia-v18-orbit-a"></span><span class="gaia-v18-orbit gaia-v18-orbit-b"></span><span class="gaia-v7-core-ring"></span><button data-gaia-agent="GAIA" aria-label="Ouvrir GAIA"><strong>G A I A</strong><small>Centre de commande</small></button></div><button type="button" class="gaia-v7-agent gaia-v7-agent-0" data-gaia-agent="Sentinelle"><span class="gaia-v7-portrait" data-v7-portrait="0"></span><strong>Sentinelle</strong><small>Sécurité & vérification</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-1" data-gaia-agent="Atlas"><span class="gaia-v7-portrait" data-v7-portrait="1"></span><strong>Atlas</strong><small>Recherche & analyse</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-2" data-gaia-agent="Forge"><span class="gaia-v7-portrait" data-v7-portrait="2"></span><strong>Forge</strong><small>Sites & applications</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-3" data-gaia-agent="Nova"><span class="gaia-v7-portrait" data-v7-portrait="3"></span><strong>Nova</strong><small>Stratégie & idées</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-4" data-gaia-agent="Pixel"><span class="gaia-v7-portrait" data-v7-portrait="4"></span><strong>Pixel</strong><small>Images & visuels</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-5" data-gaia-agent="Sage"><span class="gaia-v7-portrait" data-v7-portrait="5"></span><strong>Sage</strong><small>Mémoire & savoir</small></button><button type="button" class="gaia-v7-agent gaia-v7-agent-6" data-gaia-agent="Mercure"><span class="gaia-v7-portrait" data-v7-portrait="6"></span><strong>Mercure</strong><small>Tâches & projets</small></button></div>
 <div class="gaia-v7-panels"><section class="gaia-v7-panel gaia-v9-tasks"><h3>ϟ Tâches en cours <button type="button" data-gaia-quick="agenda">Voir tout</button></h3><div id="gaiaV9TaskRows"><p>Aucune tâche en cours affichée.</p></div></section><section class="gaia-v7-panel gaia-v9-actions"><h3>✦ Quick Actions</h3><div class="gaia-v7-actions"><button data-gaia-quick="chat">●<small>Discuter</small></button><button data-gaia-quick="build">⌘<small>Créer un site</small></button><button data-gaia-quick="visual">▧<small>Créer image</small></button><button data-gaia-quick="visual">▣<small>Créer vidéo*</small></button><button data-gaia-quick="search">⌕<small>Rechercher</small></button><button data-gaia-quick="file">▤<small>Analyser fichier</small></button><button data-gaia-quick="agenda">▦<small>Agenda</small></button><button data-gaia-quick="team">⚙<small>Agents</small></button></div><p class="gaia-v9-disclaimer">* Fonction vidéo selon les services configurés.</p></section></div>
 <div class="gaia-v7-input"><button data-gaia-tab="chat">⌨ <span>Écrire à GAIA</span></button><button class="gaia-v7-mic" data-gaia-voice="1" aria-label="Activer le microphone">🎙</button><button data-gaia-tab="settings">⚙</button></div>
 <div class="gaia-v7-footer"><span>🧠 Mémoire <b id="gaiaV9Memory">À vérifier</b></span><span>◉ IA <b id="gaiaV9IA">À vérifier</b></span><span>♧ 8 profils</span><span>▣ Projets</span></div></div><div class="v4-banner"><strong>✦ GAIA V5 · NOVA DECK</strong><span>Centre de commandement holographique</span></div><div class="v5-intro"><div><span class="v5-kicker">✦ INTELLIGENCE ORCHESTRÉE</span><h2>Bienvenue dans GAIA</h2><p>Ton centre de commande IA personnel</p></div><div class="v5-orbit-mini" aria-hidden="true">✦</div></div><div class="v5-cockpit"><span>◉ <b>GAIA V5.3</b><br>Centre spatial</span><span>✦ <b>8 profils</b><br>Agents interactifs</span><span>◇ <b>Mode IA</b><br>Selon connexion</span></div><div class="v5-scene-title">✦ <strong>HOLOGRAPHIC AGENT DECK</strong> · 8 PROFILS ✦</div><div class="holo-stage" id="holoStage" aria-label="Interface holographique interactive"><div class="core" id="holoCore" role="button" tabindex="0" aria-label="Noyau GAIA, ouvrir assistant"><div class="v5-core-label"><strong>GAIA</strong><span>V5 · NOVA DECK</span></div></div><div id="holoAgents"></div></div><div class="v5-orb-status">✦ 8 agents disponibles · Sélectionne un profil</div><div class="holo-controls"><button id="holoMotion" type="button" aria-pressed="true">⏸ Pause animation</button><p id="holoStatus" role="status">Sélectionne un agent autour de la supernova.</p></div><h1>Tableau de bord GAIA</h1><p style="text-align:center">Votre centre de commande IA, conçu pour évoluer.</p><div class="v5-chatbar"><button type="button" id="v5Talk">🎙 Parler à GAIA</button><button type="button" id="v5Write">⌨ Écrire une demande</button></div><div class="dashboard-grid"><div class="panel"><h3>✦ État du centre de commande</h3><div class="dash-stat">🌐 Serveur : <b id="dashServer">À vérifier</b></div><div class="dash-stat">🧠 Mémoire : <b id="dashMemory">Non activée</b></div><div class="dash-stat">🤖 Profils : <b>8 disponibles</b></div><div class="dash-stat">📋 Tâches enregistrées : <b id="v5TaskCount">0</b></div></div><div class="panel"><h3>⚡ Actions rapides</h3><div class="command-grid"><button type="button" data-quick="chat"><span>💬</span>Discuter</button><button type="button" data-quick="build"><span>💻</span>Créer un site</button><button type="button" data-quick="visual"><span>🎨</span>Visuels</button><button type="button" data-quick="search"><span>🔎</span>Rechercher</button><button type="button" data-quick="file"><span>📄</span>Document</button><button type="button" data-quick="agenda"><span>📅</span>Agenda</button><button type="button" data-quick="team"><span>🤖</span>Agents</button><button type="button" data-quick="memory"><span>🧠</span>Mémoire</button></div></div></div><div class="panel"><h2>Centre de commande</h2><p>Choisissez un agent, puis écrivez ou dictez votre demande. Sans serveur connecté, GAIA fonctionne en démonstration.</p><button data-tab="chat">Ouvrir l'assistant</button></div></section>
@@ -441,7 +480,7 @@ document.querySelectorAll(".gaia-v7-portrait").forEach(el=>{
  svg.appendChild(img);el.replaceChildren(svg);
 });
 
-const v7Ready=document.getElementById("v7Ready");if(v7Ready){const original=document.getElementById("status");const sync=()=>{v7Ready.textContent=original?original.textContent:"● Statut à vérifier"};sync();new MutationObserver(sync).observe(original,{childList:true,subtree:true,characterData:true})}
+const v7Ready=document.getElementById("v7Ready");if(v7Ready){const original=document.getElementById("status");const sync=()=>{v7Ready.textContent=original?original.textContent:"● Statut à vérifier"};sync();if(original)new MutationObserver(sync).observe(original,{childList:true,subtree:true,characterData:true})}
 
 
 function gaiaV9Tasks(){
@@ -477,12 +516,12 @@ document.querySelectorAll("[data-gaia-tab]").forEach(b=>b.addEventListener("clic
  const t=document.querySelector('[data-tab="'+b.dataset.gaiaTab+'"]');if(t)t.click();
 }));
 document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{
- const t=document.querySelector('[data-quick="'+b.dataset.gaiaQuick+'"]');if(t)t.click();
+ const t=document.querySelector('[data-quick="'+b.dataset.gaiaQuick+'"]');if(t)t.click();else{const tab=document.querySelector('[data-tab="workspace"]');if(tab)tab.click();}
 }));
 document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("click",()=>{
  document.querySelector('[data-tab="chat"]').click();
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=17",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=18",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
