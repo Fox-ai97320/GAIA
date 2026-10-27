@@ -1,0 +1,10 @@
+{
+  "name": "GAIA — Centre de commande",
+  "short_name": "GAIA",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080b20",
+  "theme_color": "#080b20",
+  "description": "Assistant multi-agents GAIA"
+}
