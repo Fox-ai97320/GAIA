@@ -44,7 +44,7 @@ export default {
       });
       return json({reply: typeof result.response === "string" ? result.response : "Aucune réponse générée."}, 200, origin);
     } catch (e) {
-      console.error("Workers AI error", e);
+      console.error("Workers AI error", String(e), e?.message, e?.stack);
       return json({error:"Le modèle IA est indisponible ou le quota est atteint."}, 503, origin);
     }
   }
