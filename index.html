@@ -170,296 +170,113 @@ header strong{color:#c9f7ff;text-shadow:0 0 10px #33bfff,0 0 26px #825cff}
 #home>.v4-banner,#home>.v5-intro,#home>.v5-cockpit,#home>.v5-scene-title,#home>.holo-stage,#home>.v5-orb-status,#home>.holo-controls,#home>h1,#home>p,#home>.v5-chatbar,#home>.dashboard-grid{display:none!important}
 @media(max-width:550px){main.shell{padding-left:4px;padding-right:4px}#home>.gaia-reference-scene{border-radius:4px}}
 
-/* V7 fully native interactive command interface; no reference screenshot as background */
-body:has(#home.active){background:#030715}
+
+/* GAIA REBUILD 14 — one canonical layout, no stacked version overrides */
+body:has(#home.active){background:#020614}
 body:has(#home.active)>header,body:has(#home.active) main.shell>nav{display:none}
-body:has(#home.active) main.shell{max-width:1100px;padding:0;margin:0 auto}
-#home .gaia-v7-shell{font-family:system-ui,sans-serif;color:#eff7ff;background:linear-gradient(180deg,#060a20,#060c23 75%,#030713);border:1px solid #1747a6;border-radius:14px;overflow:hidden}
-#home .gaia-v7-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px;background:linear-gradient(90deg,#060b2a,#091a3b);border-bottom:1px solid #226ed4}
-#home .gaia-v7-logo{display:flex;align-items:center;gap:10px}#home .gaia-v7-mark{font-size:42px;color:#82eaff;text-shadow:0 0 18px #4e96ff}
-#home .gaia-v7-logo strong{font-size:26px;letter-spacing:.18em;color:#a7eaff;text-shadow:0 0 14px #448aff}#home .gaia-v7-logo small{display:block;letter-spacing:.12em;font-size:9px;color:#b4caff}
-#home .gaia-v7-readiness{border:1px solid #2477c5;border-radius:12px;background:#091b3e;padding:9px;font-size:10px;color:#8de9ff}#home .gaia-v7-readiness small{display:block;color:#b8cbe8;margin-top:4px}
-#home .gaia-v7-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;padding:9px;background:#070d26}
-#home .gaia-v7-nav button{min-width:0;border:1px solid #376bc8;background:linear-gradient(#172c62,#080e32);border-radius:9px;color:#b7e6ff;font-size:20px;padding:7px 0;box-shadow:inset 0 0 10px #3184ff44}#home .gaia-v7-nav small{display:block;font-size:9px;color:#e8f4ff}
-#home .gaia-v7-space{height:590px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 49%,#6b1abb66 0%,#13104c88 29%,transparent 57%),radial-gradient(ellipse at 18% 24%,#125bbd66,transparent 33%),radial-gradient(ellipse at 83% 32%,#7b28b455,transparent 37%),linear-gradient(130deg,#060e30,#080d25 55%,#07172f);border-block:2px solid #244aa0;isolation:isolate}
-#home .gaia-v7-space:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 70px,#5e9cff16 71px 72px),linear-gradient(145deg,transparent 8%,#75baff24 10%,transparent 12%,transparent 85%,#df67ff2b 88%,transparent 90%);pointer-events:none}
-#home .gaia-v7-stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 15% 20%,#fff 99%,transparent),radial-gradient(2px 2px at 67% 11%,#8deaff 99%,transparent),radial-gradient(1px 1px at 88% 53%,#fff 99%,transparent),radial-gradient(2px 2px at 34% 71%,#f4baff 99%,transparent);background-size:115px 133px;opacity:.65}
-#home .gaia-v7-beam{position:absolute;left:50%;top:0;width:3px;height:100%;background:linear-gradient(transparent,#c078ff,#fff,#7ec9ff,transparent);box-shadow:0 0 25px #f46fff;opacity:.55}
-#home .gaia-v7-core{position:absolute;left:50%;top:49%;width:215px;height:215px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 65% 30%,#ffebc5 0%,#f655d8 7%,#862dff 16%,#114be7 36%,#240b6b 58%,#050926 78%);box-shadow:0 0 32px #ff67ed,0 0 80px #284dff,inset 0 0 30px #f9a4ff;animation:v7pulse 6s ease-in-out infinite}
-#home .gaia-v7-core:before,#home .gaia-v7-core:after{content:"";position:absolute;inset:28%;border:3px solid #ec87ff;border-radius:50%;transform:scaleX(3.5) rotate(-22deg);box-shadow:0 0 16px #fe8dff;pointer-events:none}#home .gaia-v7-core:after{transform:scaleX(3.2) rotate(56deg);border-color:#64dbff}
-#home .gaia-v7-core button{position:absolute;inset:0;border:0;background:transparent;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;text-shadow:0 0 10px #e29fff;z-index:2}#home .gaia-v7-core strong{font-size:29px}#home .gaia-v7-core small{font-size:10px}
-#home .gaia-v7-agent{position:absolute;width:112px;min-height:124px;transform:translate(-50%,-50%);z-index:3;border:1px solid var(--agent-color);border-radius:22px;background:linear-gradient(#08163fdd,#090923f0);box-shadow:0 0 13px var(--agent-color);color:#fff;padding:5px 4px 7px;text-align:center;transition:filter .2s,scale .2s}
-#home .gaia-v7-agent:hover,#home .gaia-v7-agent:focus-visible{filter:brightness(1.4);scale:1.04;outline:2px solid #fff}
-#home .gaia-v7-portrait{display:block;margin:auto;width:80px;height:78px;overflow:hidden;border-radius:45% 45% 12px 12px;border:1px solid var(--agent-color);background:#070b23}
-#home .gaia-v7-agent strong{display:block;font-size:12px}#home .gaia-v7-agent small{display:block;font-size:9px;color:#c7e5ff}
-#home .gaia-v7-agent-0{left:17%;top:27%;--agent-color:#60a4ff}#home .gaia-v7-agent-1{left:50%;top:16%;--agent-color:#48d6ff}#home .gaia-v7-agent-2{left:83%;top:27%;--agent-color:#ffb64c}#home .gaia-v7-agent-3{left:16%;top:55%;--agent-color:#df6aff}#home .gaia-v7-agent-4{left:84%;top:55%;--agent-color:#fa6ce8}#home .gaia-v7-agent-5{left:26%;top:83%;--agent-color:#40f6bb}#home .gaia-v7-agent-6{left:74%;top:83%;--agent-color:#ffd16c}
-#home .gaia-v7-panels{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:9px;background:#060b24}#home .gaia-v7-panel{min-width:0;border:1px solid #2579d8;border-radius:13px;padding:10px;background:linear-gradient(160deg,#071d45,#100b2e);box-shadow:inset 0 0 15px #2058e244}
-#home .gaia-v7-panel h3{font-size:14px;margin:0 0 10px}#home .gaia-v7-panel p{font-size:11px;color:#b3d6ff}#home .gaia-v7-panel>button{display:block;width:100%;margin:7px 0;padding:10px;background:#102a59;color:#dcf4ff;border:1px solid #3a88ec;border-radius:9px}
-#home .gaia-v7-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}#home .gaia-v7-actions button{min-width:0;background:#0d2052;border:1px solid #4067c8;border-radius:9px;color:#7be5ff;font-size:20px;padding:9px 1px}#home .gaia-v7-actions small{display:block;color:#e8f4ff;font-size:9px}
-#home .gaia-v7-input{display:flex;align-items:center;gap:10px;padding:12px;background:#081535;border-top:1px solid #397be7}#home .gaia-v7-input button{border:1px solid #3474c9;background:#0a1d48;color:#d8f2ff;border-radius:18px;padding:12px}#home .gaia-v7-input button:first-child{flex:1;text-align:left}#home .gaia-v7-input .gaia-v7-mic{font-size:26px;border-radius:50%;background:radial-gradient(#206bf2,#1c0e71);box-shadow:0 0 17px #498aff}
-#home .gaia-v7-footer{display:flex;justify-content:space-around;font-size:11px;color:#77dfff;padding:12px;background:#030b1f}
-@keyframes v7pulse{50%{filter:brightness(1.3)}}
+body:has(#home.active) main.shell{max-width:900px;padding:0;margin:0 auto}
 #home>.v4-banner,#home>.v5-intro,#home>.v5-cockpit,#home>.v5-scene-title,#home>.holo-stage,#home>.v5-orb-status,#home>.holo-controls,#home>h1,#home>p,#home>.v5-chatbar,#home>.dashboard-grid{display:none!important}
-@media(max-width:550px){#home .gaia-v7-space{height:490px}#home .gaia-v7-core{width:146px;height:146px}#home .gaia-v7-agent{width:83px;min-height:103px;padding:3px}#home .gaia-v7-portrait{width:64px;height:65px}#home .gaia-v7-agent strong{font-size:10px}#home .gaia-v7-agent small{font-size:7px}#home .gaia-v7-logo strong{font-size:20px}#home .gaia-v7-readiness{font-size:8px}#home .gaia-v7-panels{grid-template-columns:1fr 1fr}#home .gaia-v7-panel{padding:6px}#home .gaia-v7-actions{grid-template-columns:repeat(2,1fr)}}
-
-/* GAIA V8: reference-matched character artwork, not a screenshot background */
-#home .gaia-v7-portrait{width:100%;height:100px;overflow:hidden;border-radius:40% 40% 10px 10px;border:0;background:transparent;filter:drop-shadow(0 0 8px var(--agent-color))}
-#home .gaia-v7-portrait svg{display:block;width:100%;height:100%;overflow:hidden}
-#home .gaia-v7-agent{background:linear-gradient(180deg,#0b1641aa 0%,#080b2ddc 68%,#090d2df2);border:1px solid var(--agent-color);border-radius:48% 48% 18px 18px;box-shadow:0 0 15px var(--agent-color),inset 0 0 18px #3d6bff44;min-height:148px;padding:0 4px 9px}
-#home .gaia-v7-agent strong{font-size:13px;text-shadow:0 0 8px var(--agent-color)}
-#home .gaia-v7-agent small{font-size:9px}
-#home .gaia-v7-space{background:radial-gradient(circle at 50% 48%,#a626d977 0%,#29126b88 24%,transparent 48%),radial-gradient(ellipse at 50% 95%,#206aff4d,transparent 40%),radial-gradient(ellipse at 15% 20%,#143c9988,transparent 40%),radial-gradient(ellipse at 85% 18%,#59239c88,transparent 40%),#04091e}
-#home .gaia-v7-core{width:250px;height:250px;background:radial-gradient(circle at 63% 32%,#fff5df 0%,#ff92df 5%,#e934e7 11%,#9a32ff 22%,#1c56d8 42%,#18075e 61%,#050a27 80%);box-shadow:0 0 24px #e9a5ff,0 0 60px #ff48ee,0 0 115px #2c61ff,inset 0 0 48px #ed77ff}
-#home .gaia-v7-core:before,#home .gaia-v7-core:after{inset:27%;border-width:4px;box-shadow:0 0 20px #fa98ff}
-#home .gaia-v7-head{background:linear-gradient(90deg,#040824,#0b1946);box-shadow:inset 0 -8px 25px #1a5de255}
-#home .gaia-v7-panels{background:linear-gradient(180deg,#06152e,#080b27)}
-#home .gaia-v7-panel{box-shadow:inset 0 0 18px #2779f055,0 0 10px #295bca55}
-#home .gaia-v7-nav button{box-shadow:inset 0 0 15px #3974e977,0 0 9px #265cff55}
-#home .gaia-v7-agent-0{left:18%;top:28%}
-#home .gaia-v7-agent-1{left:50%;top:15%}
-#home .gaia-v7-agent-2{left:82%;top:28%}
-#home .gaia-v7-agent-3{left:15%;top:57%}
-#home .gaia-v7-agent-4{left:85%;top:57%}
-#home .gaia-v7-agent-5{left:24%;top:84%}
-#home .gaia-v7-agent-6{left:76%;top:84%}
+#home .gaia-v7-shell{width:100%;max-width:823px;margin:auto;color:#e8f4ff;background:#03091d;border:1px solid #1649a2;border-radius:0;font-family:system-ui,sans-serif;overflow:hidden;box-shadow:0 0 45px #2558ef55}
+#home .gaia-v7-head{height:125px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:radial-gradient(ellipse at 16% 50%,#1b2780,transparent 52%),linear-gradient(100deg,#030820,#09163d);border-bottom:2px solid #2b61d4}
+#home .gaia-v7-logo{display:flex;align-items:center;gap:12px;min-width:0}
+#home .gaia-v7-mark{font-size:67px;line-height:1;color:#78dfff;filter:drop-shadow(0 0 12px #6d4bff)}
+#home .gaia-v7-logo strong{display:block;font-size:clamp(25px,6vw,59px);letter-spacing:.13em;white-space:nowrap;color:#b5e8ff;text-shadow:0 0 7px #fff,0 0 24px #337cff}
+#home .gaia-v7-logo small{display:block;font-size:clamp(8px,1.8vw,15px);letter-spacing:.14em;color:#b5c8e8}
+#home .gaia-v7-readiness{min-width:31%;max-width:40%;padding:9px;border:1px solid #316dd8;border-radius:13px;background:#091331e8;box-shadow:0 0 15px #216aff55;font-size:12px;color:#83dfff}
+#home .gaia-v7-readiness time{display:block;font-size:24px;font-weight:800;color:white}
+#home .gaia-v7-readiness small{display:block;font-size:10px;color:#9dc8e9}
+#home .gaia-v7-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding:10px 8px;background:#050b25;border-bottom:2px solid #234ca6}
+#home .gaia-v7-nav button{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:10px 0;color:#aeeaff;background:linear-gradient(150deg,#173578,#090f34);border:1px solid #497bd6;border-radius:12px;box-shadow:inset 0 0 16px #2d7afc44;font-size:25px}
+#home .gaia-v7-nav button:first-child{background:linear-gradient(140deg,#227bff,#12105e);box-shadow:0 0 17px #2685ff}
+#home .gaia-v7-nav small{font-size:12px;color:#f0f8ff}
+#home .gaia-v7-space{height:730px;position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 50% 50%,#9d32d96b,transparent 40%),radial-gradient(ellipse at 13% 22%,#2654c48a,transparent 35%),radial-gradient(ellipse at 86% 24%,#8243c18a,transparent 35%),#02091d}
+#home .gaia-v7-space:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(108deg,#050b26 0 3%,#3875ce 3.5%,#040b26 5%,transparent 12% 88%,#030b28 95%,#3875ce 96.5%,#040b25 98%),linear-gradient(180deg,#050b24 0 2%,#3574df 3%,transparent 8% 91%,#2053b6 96%,#050b24 99%);box-shadow:inset 0 0 40px #3179e688}
+#home .gaia-v7-space:after{content:"";position:absolute;left:5%;right:5%;bottom:0;height:22%;z-index:0;pointer-events:none;opacity:.6;background:repeating-linear-gradient(90deg,#060f2c 0 30px,#2856a7 31px 33px,#050b22 34px 65px);clip-path:polygon(29% 0,71% 0,100% 100%,0 100%)}
+#home .gaia-v13-window{position:absolute;top:7%;width:29%;height:78%;z-index:0;pointer-events:none;border:9px solid #071332;background:radial-gradient(circle at 35% 27%,#c15dff88,transparent 24%),radial-gradient(circle at 70% 65%,#297afc77,transparent 30%),#051137;box-shadow:inset 0 0 20px #519dff,0 0 14px #2565d9}
+#home .gaia-v13-window-left{left:-7%;transform:skewY(12deg);clip-path:polygon(8% 0,100% 8%,90% 95%,0 100%)}
+#home .gaia-v13-window-right{right:-7%;transform:skewY(-12deg);clip-path:polygon(0 8%,92% 0,100% 100%,10% 95%)}
+#home .gaia-v13-ceiling{position:absolute;inset:0 8% auto;height:8%;z-index:1;pointer-events:none;background:repeating-linear-gradient(90deg,#03091c 0 13%,#1e4389 14% 16%,#060f2a 17% 29%);clip-path:polygon(0 0,100% 0,91% 100%,9% 100%);border-bottom:2px solid #418aff}
+#home .gaia-v13-floor{position:absolute;inset:auto 8% 0;height:18%;z-index:1;pointer-events:none;background:repeating-linear-gradient(90deg,#050d24 0 28px,#2858ad 29px 31px,#050d24 32px 60px);clip-path:polygon(30% 0,70% 0,100% 100%,0 100%);opacity:.7}
+#home .gaia-v7-stars{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.7;background-image:radial-gradient(1px 1px at 17% 22%,white 99%,transparent),radial-gradient(2px 2px at 72% 42%,#d4b6ff 99%,transparent),radial-gradient(1px 1px at 83% 13%,white 99%,transparent);background-size:103px 127px;animation:gaiaStars 6s ease-in-out infinite alternate}
+#home .gaia-v7-beam{position:absolute;top:0;bottom:0;left:50%;width:4px;z-index:1;pointer-events:none;background:linear-gradient(transparent,#b77dff,#fff,#62d5ff,transparent);box-shadow:0 0 24px #f68dff;animation:gaiaStars 4s ease-in-out infinite alternate}
+#home .gaia-v7-core{position:absolute;left:50%;top:49%;width:37%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;z-index:2;border:2px solid #bb8aff;background:radial-gradient(circle at 62% 29%,#fff8db 0%,#ffa1e9 4%,#e72be4 9%,#9a31ff 21%,#306dff 37%,#250e8e 54%,#040b35 76%);box-shadow:0 0 15px #fff,0 0 55px #e54dff,0 0 115px #3869ff,inset 0 0 50px #e25dff;animation:gaiaPulse 5s ease-in-out infinite}
+#home .gaia-v7-core:before,#home .gaia-v7-core:after{content:"";position:absolute;inset:23%;border:4px solid #ffb1fb;border-radius:50%;transform:scaleX(3.5) rotate(-18deg);box-shadow:0 0 18px #ff73ed;pointer-events:none}
+#home .gaia-v7-core:after{border-color:#64d8ff;transform:scaleX(3.2) rotate(39deg)}
+#home .gaia-v7-core button{position:absolute;inset:0;border:0;background:transparent;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-shadow:0 0 15px #c389ff}
+#home .gaia-v7-core strong{font-size:clamp(23px,5vw,44px);letter-spacing:.15em}
+#home .gaia-v7-core small{font-size:clamp(9px,1.6vw,15px)}
+#home .gaia-v7-agent{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:19%;height:22%;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0 2px 5px;background:linear-gradient(180deg,transparent 0%,#03082444 64%,#040b29ee 100%);border:0;border-radius:42% 42% 17px 17px;box-shadow:none;color:white;text-align:center;filter:drop-shadow(0 0 10px var(--agent-color));transition:filter .2s,scale .2s}
+#home .gaia-v7-agent:hover,#home .gaia-v7-agent:focus-visible{filter:drop-shadow(0 0 18px var(--agent-color));scale:1.05;outline:2px solid #b9eeff}
+#home .gaia-v7-agent:after{content:"";position:absolute;left:0;right:0;top:69%;height:19%;border:2px solid var(--agent-color);border-radius:50%;background:#081333cc;box-shadow:0 0 14px var(--agent-color);z-index:-1}
+#home .gaia-v7-portrait{display:block;width:100%;height:73%;border:0;border-radius:43% 43% 5px 5px;overflow:hidden;background:transparent;filter:drop-shadow(0 0 8px var(--agent-color))}
+#home .gaia-v7-portrait svg{width:100%;height:100%;display:block}
+#home .gaia-v7-agent strong{position:relative;z-index:2;display:block;font-size:clamp(11px,2vw,17px);line-height:1.1;text-shadow:0 0 9px #000,0 0 8px var(--agent-color)}
+#home .gaia-v7-agent small{position:relative;z-index:2;display:block;font-size:clamp(8px,1.3vw,12px);line-height:1.1;color:#e2eaff;text-shadow:0 0 5px #000}
+#home .gaia-v7-agent-0{left:19%;top:26%;--agent-color:#51b9ff}
+#home .gaia-v7-agent-1{left:50%;top:14%;--agent-color:#4ddcff}
+#home .gaia-v7-agent-2{left:81%;top:26%;--agent-color:#ffb65b}
+#home .gaia-v7-agent-3{left:14%;top:55%;--agent-color:#e763ff}
+#home .gaia-v7-agent-4{left:86%;top:55%;--agent-color:#fb66ed}
+#home .gaia-v7-agent-5{left:25%;top:85%;--agent-color:#41f2b8}
+#home .gaia-v7-agent-6{left:75%;top:85%;--agent-color:#ffd26c}
+#home .gaia-v7-panels{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:9px;background:linear-gradient(#060e2d,#050a23)}
+#home .gaia-v7-panel{min-width:0;border:2px solid #2e7be5;border-radius:13px;background:linear-gradient(150deg,#071a40,#100b32);padding:11px;box-shadow:0 0 12px #347bff77,inset 0 0 18px #2457c744}
+#home .gaia-v7-panel h3{display:flex;align-items:center;justify-content:space-between;font-size:16px;margin:0 0 8px}
+#home .gaia-v9-tasks h3 button{border:0;background:transparent;color:#77d9ff;font-size:11px}
+#home .gaia-v9-task{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #2c4d8b;font-size:12px}
+#home .gaia-v9-task i{width:8px;height:8px;border-radius:50%;background:#43baff}
+#home .gaia-v9-task span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#home .gaia-v9-task em{font-size:10px;color:#8adfff;font-style:normal}
+#home .gaia-v9-tasks p{font-size:12px;color:#b5cbea}
+#home .gaia-v7-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+#home .gaia-v7-actions button{min-width:0;border:1px solid #417adf;border-radius:9px;background:linear-gradient(135deg,#10327c,#210d59);color:#6adfff;padding:11px 1px;font-size:24px;box-shadow:inset 0 0 12px #3c7bff55}
+#home .gaia-v7-actions small{display:block;font-size:10px;color:#f1f7ff}
+#home .gaia-v9-disclaimer{font-size:9px;color:#8eafd5;margin:5px 0 0}
+#home .gaia-v7-input{display:flex;align-items:center;gap:10px;margin:10px;border:2px solid #3e84ff;border-radius:28px;padding:11px;background:linear-gradient(90deg,#081d49,#170d43);box-shadow:0 0 17px #2b70ff88}
+#home .gaia-v7-input button{border:1px solid #3567c7;border-radius:18px;background:#0b1b43;color:#e2f6ff;padding:12px;font-size:16px}
+#home .gaia-v7-input button:first-child{flex:1;text-align:left}
+#home .gaia-v7-input .gaia-v7-mic{border-radius:50%;font-size:30px;background:radial-gradient(#288cff,#170e7b);border:2px solid #86edff;box-shadow:0 0 18px #377fff,0 0 24px #d657ff}
+#home .gaia-v7-footer{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:12px 7px;background:#030b21;border-top:1px solid #1c53aa;font-size:11px;color:#90ddff;text-align:center}
+#home .gaia-v7-footer b{display:block;color:#43e6b3;font-size:10px}
+@keyframes gaiaPulse{50%{filter:brightness(1.25)}}@keyframes gaiaStars{50%{opacity:1}}
 @media(max-width:550px){
-#home .gaia-v7-space{height:540px}
-#home .gaia-v7-core{width:165px;height:165px}
-#home .gaia-v7-agent{width:94px;min-height:117px;padding:0 3px 6px}
-#home .gaia-v7-portrait{height:79px}
-#home .gaia-v7-agent strong{font-size:11px}
-#home .gaia-v7-agent small{font-size:8px}
-#home .gaia-v7-agent-0{left:16%;top:28%}
-#home .gaia-v7-agent-2{left:84%;top:28%}
-#home .gaia-v7-agent-3{left:15%;top:57%}
-#home .gaia-v7-agent-4{left:85%;top:57%}
-}
-
-/* GAIA V9 - reference fidelity: independently rendered controls and artwork */
-#home .gaia-v7-shell{border:0;border-radius:0;box-shadow:0 0 30px #1b5be966;background:#03081a}
-#home .gaia-v7-head{padding:12px 14px;min-height:112px;background:radial-gradient(ellipse at 20% 50%,#18247b 0%,transparent 46%),linear-gradient(90deg,#04071e,#0a1439);border-bottom:2px solid #1c60e1}
-#home .gaia-v7-logo strong{font-size:clamp(24px,6vw,54px);letter-spacing:.16em;font-weight:900;text-shadow:0 0 6px #fff,0 0 20px #1d76ff,0 0 35px #477aff}
-#home .gaia-v7-mark{font-size:60px;filter:drop-shadow(0 0 12px #3c5fff)}
-#home .gaia-v7-logo small{font-size:clamp(8px,1.8vw,15px);letter-spacing:.16em}
-#home .gaia-v7-readiness{font-size:clamp(9px,1.5vw,13px);box-shadow:0 0 14px #256cff88;max-width:42%}
-#home .gaia-v7-nav{padding:10px 7px;gap:7px;background:#050923;border-bottom:2px solid #2050a9}
-#home .gaia-v7-nav button{border:1px solid #496ed2;border-radius:12px;font-size:27px;padding:9px 0;background:linear-gradient(135deg,#1a347b,#0b1034);box-shadow:inset 0 0 14px #366df366,0 0 7px #336aff55}
-#home .gaia-v7-nav button:first-child{background:linear-gradient(130deg,#1667e9,#101e66);box-shadow:0 0 17px #187bff}
-#home .gaia-v7-nav small{font-size:clamp(8px,1.5vw,12px)}
-#home .gaia-v7-space{height:710px;border:0;background:radial-gradient(ellipse at 50% 48%,#3a158588,transparent 51%),radial-gradient(ellipse at 18% 26%,#163ca966,transparent 34%),radial-gradient(ellipse at 84% 25%,#51209966,transparent 36%),linear-gradient(145deg,#030b25,#0c1232 47%,#060b25);box-shadow:inset 0 0 70px #2e74ff55}
-#home .gaia-v7-space:before{background:linear-gradient(110deg,#3475ff33,transparent 15%,transparent 82%,#a949ff33),repeating-linear-gradient(90deg,transparent 0 80px,#418cff0f 81px 82px);border-left:12px solid #143a85;border-right:12px solid #143a85;box-shadow:inset 0 0 40px #3975ff66}
-#home .gaia-v7-space:after{content:"";position:absolute;left:7%;right:7%;bottom:0;height:22%;background:repeating-linear-gradient(90deg,#0d1b41 0 32px,#24529d 34px 36px,#040d2a 38px 70px);clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);opacity:.38;pointer-events:none}
-#home .gaia-v7-core{width:290px;height:290px;top:48%;background:radial-gradient(circle at 63% 29%,#fff8da 0%,#ffb3e5 3%,#ff48d8 8%,#742dff 21%,#2267ff 41%,#210a77 57%,#060a31 76%);box-shadow:0 0 16px #fff,0 0 60px #e642ff,0 0 115px #3076ff,inset 0 0 55px #fb67ff}
-#home .gaia-v7-core button strong{font-size:37px;text-shadow:0 0 14px #fff,0 0 25px #b477ff}
-#home .gaia-v7-agent{width:138px;min-height:160px;border:0;background:linear-gradient(180deg,transparent 0%,#080e31b8 70%,#060b27f5 100%);box-shadow:none;border-radius:45% 45% 18px 18px}
-#home .gaia-v7-agent:after{content:"";position:absolute;left:5%;right:5%;top:72%;height:25px;border:2px solid var(--agent-color);border-radius:50%;box-shadow:0 0 17px var(--agent-color);z-index:-1}
-#home .gaia-v7-portrait{height:112px;filter:drop-shadow(0 0 13px var(--agent-color))}
-#home .gaia-v7-agent strong{font-size:15px}
-#home .gaia-v7-agent small{font-size:11px}
-#home .gaia-v7-panels{gap:10px;padding:10px 9px;background:linear-gradient(#050a20,#060d2d)}
-#home .gaia-v7-panel{border:2px solid #337ce6;border-radius:14px;box-shadow:0 0 15px #316aff66,inset 0 0 25px #1638a566;padding:12px}
-#home .gaia-v7-panel h3{font-size:16px;color:#d3edff;display:flex;align-items:center;justify-content:space-between}
-#home .gaia-v9-tasks h3 button{font-size:11px;color:#71caff;background:transparent;border:0}
-#home .gaia-v9-tasks p{font-size:12px}
-#home .gaia-v9-task{display:flex;gap:8px;align-items:center;border-bottom:1px solid #274b91;padding:10px 0;font-size:12px}
-#home .gaia-v9-task i{width:8px;height:8px;border-radius:50%;background:#46baff;box-shadow:0 0 10px #38c6ff}
-#home .gaia-v9-task span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#home .gaia-v9-task em{font-size:10px;color:#76d6ff;font-style:normal}
-#home .gaia-v7-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-#home .gaia-v7-actions button{border-radius:11px;padding:12px 2px;background:linear-gradient(135deg,#102e74,#180c50);box-shadow:inset 0 0 12px #2674ff66;font-size:22px}
-#home .gaia-v7-actions small{font-size:10px}
-#home .gaia-v9-disclaimer{font-size:9px;color:#90a9cc;margin:6px 0 0}
-#home .gaia-v7-input{margin:6px 9px 10px;border:2px solid #327aff;border-radius:26px;background:linear-gradient(90deg,#081b46,#120b42);box-shadow:0 0 20px #2968ff66;justify-content:center}
-#home .gaia-v7-input button:first-child{background:transparent;border:0;font-size:14px}
-#home .gaia-v7-input .gaia-v7-mic{font-size:35px;border:3px solid #84ddff;box-shadow:0 0 15px #fff,0 0 25px #2b7aff,0 0 32px #e543ff}
-#home .gaia-v7-footer{background:#040b21;border-top:1px solid #1c5abd;gap:6px;flex-wrap:wrap}
-#home .gaia-v7-footer b{display:block;color:#49e3b5;font-size:10px}
-@media(max-width:550px){
-#home .gaia-v7-head{min-height:80px;padding:8px}
+#home .gaia-v7-head{height:80px;padding:7px;gap:5px}
 #home .gaia-v7-mark{font-size:38px}
-#home .gaia-v7-readiness{padding:6px}
-#home .gaia-v7-nav{gap:3px;padding:6px 3px}
-#home .gaia-v7-nav button{font-size:20px;padding:7px 0}
-#home .gaia-v7-space{height:580px}
-#home .gaia-v7-core{width:172px;height:172px}
-#home .gaia-v7-core button strong{font-size:22px}
-#home .gaia-v7-agent{width:96px;min-height:119px;padding:0 2px 4px}
-#home .gaia-v7-portrait{height:84px}
-#home .gaia-v7-agent strong{font-size:11px}
-#home .gaia-v7-agent small{font-size:8px}
-#home .gaia-v7-panels{grid-template-columns:1fr 1fr;gap:5px;padding:6px 3px}
-#home .gaia-v7-panel{padding:6px;border-width:1px}
+#home .gaia-v7-logo{gap:4px}
+#home .gaia-v7-logo strong{font-size:clamp(20px,5.4vw,30px)}
+#home .gaia-v7-logo small{font-size:7px}
+#home .gaia-v7-readiness{min-width:38%;max-width:43%;padding:5px;font-size:9px}
+#home .gaia-v7-readiness time{font-size:16px}
+#home .gaia-v7-readiness small{font-size:8px}
+#home .gaia-v7-nav{gap:3px;padding:5px 3px}
+#home .gaia-v7-nav button{padding:7px 0;font-size:18px;border-radius:7px}
+#home .gaia-v7-nav small{font-size:8px}
+#home .gaia-v7-space{height:auto;aspect-ratio:823/800}
+#home .gaia-v13-window{border-width:5px}
+#home .gaia-v7-agent{width:23%;height:22%}
+#home .gaia-v7-agent strong{font-size:clamp(9px,2.4vw,12px)}
+#home .gaia-v7-agent small{font-size:clamp(7px,1.6vw,9px)}
+#home .gaia-v7-core{width:38%}
+#home .gaia-v7-panels{gap:4px;padding:5px}
+#home .gaia-v7-panel{border-width:1px;padding:6px}
 #home .gaia-v7-panel h3{font-size:11px}
-#home .gaia-v7-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
-#home .gaia-v7-actions button{font-size:18px;padding:9px 0}
-#home .gaia-v7-actions small{font-size:8px}
 #home .gaia-v9-task{font-size:9px;padding:7px 0}
 #home .gaia-v9-task em{font-size:8px}
-}
-
-/* GAIA V10: art-directed cockpit assembled from independent interactive elements */
-#home .gaia-v7-space{position:relative;background:
-radial-gradient(ellipse at 50% 51%,#7718db9c 0%,#2622b499 18%,transparent 48%),
-radial-gradient(ellipse at 15% 20%,#154db877,transparent 32%),
-radial-gradient(ellipse at 85% 22%,#ad47dd66,transparent 33%),
-radial-gradient(ellipse at 50% 90%,#1d7dff77,transparent 40%),#020a24}
-#home .gaia-v7-space:before{border:0;inset:0;box-shadow:inset 0 0 55px #498aff77;background:
-linear-gradient(115deg,#020b2f 0 5%,#3588ff99 5.3%,#040d29 6.2%,transparent 12% 88%,#040d29 94%,#bd6aff88 94.8%,#020b2f 95.5%),
-linear-gradient(180deg,#07122d 0 4%,#18438e 4.3%,transparent 9% 86%,#163a83 91%,#040b22 97%)}
-#home .gaia-v7-space:after{left:4%;right:4%;height:22%;bottom:0;opacity:.5;background:
-repeating-linear-gradient(90deg,#070e2a 0 18px,#245cb5 19px 21px,#050d2b 22px 50px),
-linear-gradient(#2d8aff,#030d28);clip-path:polygon(32% 0,68% 0,100% 100%,0 100%)}
-#home .gaia-v7-core{z-index:2;top:49%;border:2px solid #af78ff;background:
-radial-gradient(circle at 58% 31%,#fff8df 0%,#ffa2ef 4%,#f82bdb 9%,#9a36ff 18%,#326bff 35%,#2c139e 50%,#050e54 68%,#030924 83%);box-shadow:0 0 10px #fff,0 0 34px #e63dff,0 0 80px #3b7cff,0 0 140px #bf3bff,inset 0 0 40px #f971fa}
-#home .gaia-v7-core:before{inset:24%;transform:scaleX(3.5) rotate(-18deg);border:4px solid #ffb4f5;box-shadow:0 0 16px #fff,0 0 30px #f45dff}
-#home .gaia-v7-core:after{inset:24%;transform:scaleX(3.3) rotate(43deg);border:3px solid #70ddff;box-shadow:0 0 18px #2d8aff}
-#home .gaia-v7-agent{z-index:4;overflow:visible;background:transparent;border:0;box-shadow:none;border-radius:0;filter:drop-shadow(0 0 8px var(--agent-color))}
-#home .gaia-v7-agent:after{top:68%;height:28px;left:-4%;right:-4%;background:radial-gradient(ellipse,#0d1540,#060b29 72%);border:2px solid var(--agent-color);box-shadow:0 0 12px var(--agent-color),inset 0 0 9px var(--agent-color);z-index:-1}
-#home .gaia-v7-portrait{height:120px;border:0;border-radius:42% 42% 0 0;filter:drop-shadow(0 0 12px var(--agent-color))}
-#home .gaia-v7-portrait svg{height:100%;width:100%;display:block}
-#home .gaia-v7-agent strong{position:relative;z-index:2;margin-top:-5px;text-shadow:0 0 10px #000,0 0 9px var(--agent-color)}
-#home .gaia-v7-agent small{position:relative;z-index:2;text-shadow:0 1px 5px #000}
-#home .gaia-v7-head{border:1px solid #1c53c6}
-#home .gaia-v7-logo .gaia-v7-mark{font-size:64px;line-height:1;transform:rotate(-25deg);color:#8beaff;text-shadow:0 0 18px #754aff,0 0 26px #2979ff}
-#home .gaia-v7-panel{background:linear-gradient(150deg,#061b3d,#0c0a2e);box-shadow:inset 0 0 20px #2775ff55,0 0 12px #1c66fa66}
-#home .gaia-v7-actions button{transition:transform .15s,filter .15s}
-#home .gaia-v7-actions button:active{transform:scale(.94);filter:brightness(1.5)}
-#home .gaia-v7-nav button:active{filter:brightness(1.5)}
-@media(max-width:550px){
-#home .gaia-v7-space{height:570px}
-#home .gaia-v7-portrait{height:90px}
-#home .gaia-v7-agent{min-height:120px}
-#home .gaia-v7-agent-0{left:17%;top:29%}
-#home .gaia-v7-agent-1{left:50%;top:15%}
-#home .gaia-v7-agent-2{left:83%;top:29%}
-#home .gaia-v7-agent-3{left:14%;top:57%}
-#home .gaia-v7-agent-4{left:86%;top:57%}
-#home .gaia-v7-agent-5{left:24%;top:85%}
-#home .gaia-v7-agent-6{left:76%;top:85%}
-}
-
-/* V11 clean override: reconstruct original reference geometry at 823x1536 proportion */
-#home .gaia-v7-shell{width:100%;max-width:823px;margin:auto;background:#030819;overflow:hidden}
-#home .gaia-v7-head{height:auto;min-height:0;aspect-ratio:823/150;display:flex;padding:1.5% 2.5%;background:radial-gradient(ellipse at 20% 50%,#172d82 0%,transparent 48%),linear-gradient(95deg,#05071b,#081437);border:0}
-#home .gaia-v7-logo strong{font-size:clamp(24px,6.5vw,64px);letter-spacing:.13em}
-#home .gaia-v7-logo small{font-size:clamp(8px,1.6vw,16px)}
-#home .gaia-v7-readiness{border:1px solid #316cdb;min-width:40%;min-height:70%;display:flex;flex-direction:column;justify-content:center}
-#home .gaia-v7-nav{height:auto;aspect-ratio:823/106;grid-template-columns:repeat(6,minmax(0,1fr));padding:1.3%;gap:1.3%;align-items:stretch}
-#home .gaia-v7-nav button{height:100%;border-radius:12px;font-size:clamp(18px,3vw,31px)}
-#home .gaia-v7-nav small{font-size:clamp(8px,1.45vw,13px)}
-#home .gaia-v7-space{height:auto;aspect-ratio:823/760;overflow:hidden;background:
-radial-gradient(circle at 50% 50%,#822de58a,transparent 34%),
-radial-gradient(ellipse at 20% 20%,#2157bc88,transparent 40%),
-radial-gradient(ellipse at 80% 20%,#8545bc77,transparent 40%),#04091e}
-#home .gaia-v7-core{width:37%;height:auto;aspect-ratio:1;left:50%;top:49%;z-index:2}
-#home .gaia-v7-agent{width:20%;min-height:0;height:21%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0;background:transparent}
-#home .gaia-v7-portrait{width:100%;height:73%;overflow:hidden}
-#home .gaia-v7-agent strong{font-size:clamp(10px,2vw,17px);line-height:1.1}
-#home .gaia-v7-agent small{font-size:clamp(8px,1.3vw,12px);line-height:1.1;max-width:100%}
-#home .gaia-v7-agent-0{left:19%;top:25%}
-#home .gaia-v7-agent-1{left:50%;top:13%}
-#home .gaia-v7-agent-2{left:81%;top:25%}
-#home .gaia-v7-agent-3{left:14%;top:56%}
-#home .gaia-v7-agent-4{left:86%;top:56%}
-#home .gaia-v7-agent-5{left:25%;top:85%}
-#home .gaia-v7-agent-6{left:75%;top:85%}
-#home .gaia-v7-panels{display:grid;grid-template-columns:1fr 1fr;gap:1%;padding:1%;align-items:stretch}
-#home .gaia-v7-panel{min-width:0;padding:3%;border-radius:14px}
-#home .gaia-v7-panel h3{font-size:clamp(11px,2vw,17px)}
-#home .gaia-v7-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:2%}
-#home .gaia-v7-actions button{padding:15% 0;font-size:clamp(15px,3vw,24px)}
-#home .gaia-v7-actions small{font-size:clamp(7px,1.3vw,12px)}
-#home .gaia-v9-task{font-size:clamp(8px,1.5vw,13px)}
-#home .gaia-v7-input{min-height:80px}
-#home .gaia-v7-footer{display:grid;grid-template-columns:repeat(4,1fr)}
-@media(max-width:550px){
-#home .gaia-v7-head{min-height:70px}
-#home .gaia-v7-space{height:auto;aspect-ratio:823/820}
-#home .gaia-v7-core{width:37%;height:auto}
-#home .gaia-v7-agent{width:23%;height:21%;min-height:0}
-#home .gaia-v7-portrait{height:72%}
-#home .gaia-v7-agent strong{font-size:clamp(9px,2.4vw,13px)}
-#home .gaia-v7-agent small{font-size:clamp(7px,1.7vw,10px)}
-#home .gaia-v7-actions{grid-template-columns:repeat(4,minmax(0,1fr))}
-#home .gaia-v7-actions button{padding:8px 0;font-size:17px}
+#home .gaia-v7-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}
+#home .gaia-v7-actions button{font-size:17px;padding:8px 0}
 #home .gaia-v7-actions small{font-size:7px}
-#home .gaia-v7-panel{padding:5px}
-#home .gaia-v7-nav{min-height:60px}
-#home .gaia-v7-nav button{font-size:18px}
-#home .gaia-v7-input{min-height:65px}
+#home .gaia-v7-input{margin:6px;padding:6px;gap:5px}
+#home .gaia-v7-input button{padding:8px;font-size:12px}
+#home .gaia-v7-input .gaia-v7-mic{font-size:24px}
+#home .gaia-v7-footer{font-size:8px;padding:8px 3px}
 }
-
-/* GAIA V12: repair portrait cropping and build layered spaceship interior, no full-screen screenshot */
-#home .gaia-v7-space{background:
-radial-gradient(circle at 50% 47%,#e41aff66 0%,#5e15b577 19%,transparent 45%),
-radial-gradient(ellipse at 15% 18%,#275edca8 0%,transparent 34%),
-radial-gradient(ellipse at 85% 19%,#6d2ec2a8 0%,transparent 35%),
-radial-gradient(ellipse at 50% 95%,#2167df99 0%,transparent 37%),
-#020719!important;isolation:isolate}
-#home .gaia-v7-space:before{content:"";position:absolute;inset:0;border:0!important;box-shadow:inset 0 0 38px #2e7aff88!important;background:
-linear-gradient(115deg,#02081b 0 3%,#153b87 3.3%,#030e30 4.5%,transparent 10% 90%,#030e30 95.5%,#153b87 96.7%,#02081b 97%),
-linear-gradient(180deg,#02081c 0 3%,#184fbd 3.5%,#0a1740 5%,transparent 11% 89%,#15336f 95%,#02071b 98%),
-repeating-linear-gradient(90deg,transparent 0 76px,#6c9cff18 77px 78px);
-pointer-events:none;z-index:0}
-#home .gaia-v7-space:after{content:"";position:absolute;inset:auto 4% 0;height:22%;opacity:.72!important;background:
-linear-gradient(0deg,#09183c,#2461b5 2%,#071632 5%,transparent 95%),
-repeating-linear-gradient(90deg,#040b21 0 24px,#2652a4 26px 28px,#050d25 31px 60px);
-clip-path:polygon(32% 0,68% 0,100% 100%,0 100%);pointer-events:none;z-index:0}
-#home .gaia-v7-stars{z-index:0;opacity:.9;background-image:
-radial-gradient(2px 2px at 12% 21%,#fff 98%,transparent),
-radial-gradient(1px 1px at 76% 13%,#fff 98%,transparent),
-radial-gradient(2px 2px at 63% 45%,#d0c0ff 98%,transparent),
-radial-gradient(1px 1px at 40% 63%,#f4b8ff 98%,transparent),
-radial-gradient(1px 1px at 89% 72%,#c8eaff 98%,transparent);
-background-size:97px 103px}
-#home .gaia-v7-beam{z-index:1;width:5px;box-shadow:0 0 10px #fff,0 0 26px #ef7cff,0 0 55px #528cff}
-#home .gaia-v7-core{z-index:2;background:
-radial-gradient(circle at 62% 30%,#fff7df 0%,#ffb2df 3%,#fb36e8 8%,#8a26f7 18%,#275fff 33%,#1a0d85 49%,#070d46 67%,#020b2a 80%),
-repeating-radial-gradient(circle at 50% 50%,#cc4aff 0 2px,transparent 4px 12px)!important;
-box-shadow:0 0 9px #fff,0 0 33px #fa64ff,0 0 75px #336cff,0 0 120px #be2aff,inset 0 0 35px #fda4ff!important}
-#home .gaia-v7-core:before{inset:23%!important;transform:scaleX(3.5) rotate(-18deg)!important;border:4px solid #ffb5f9!important;box-shadow:0 0 11px #fff,0 0 25px #fa5dff!important}
-#home .gaia-v7-core:after{inset:23%!important;transform:scaleX(3.2) rotate(36deg)!important;border:3px solid #67d8ff!important;box-shadow:0 0 15px #3eaaff!important}
-#home .gaia-v7-portrait{width:100%!important;height:73%!important;border:0!important;border-radius:42% 42% 6px 6px!important;overflow:hidden!important;filter:drop-shadow(0 0 9px var(--agent-color))}
-#home .gaia-v7-portrait svg{width:100%!important;height:100%!important}
-#home .gaia-v7-agent{background:linear-gradient(180deg,transparent 0%,#03082433 60%,#050b28e8 100%)!important}
-#home .gaia-v7-agent:after{top:71%!important;height:19%!important;z-index:-1!important}
-#home .gaia-v7-agent strong{margin-top:1px!important;padding:1px 5px;background:#050a2cbb;border-radius:12px;z-index:4}
-#home .gaia-v7-agent small{background:#050a2caa;border-radius:8px;padding:1px 2px;z-index:4}
-#home .gaia-v7-panels{position:relative;z-index:2}
-#home .gaia-v7-input{position:relative;z-index:2}
-@media(max-width:550px){
-#home .gaia-v7-space{aspect-ratio:823/800!important}
-#home .gaia-v7-agent{height:22%!important}
-#home .gaia-v7-core{width:38%!important}
-#home .gaia-v7-agent strong{font-size:clamp(9px,2.3vw,12px)!important}
-#home .gaia-v7-agent small{font-size:clamp(7px,1.7vw,9px)!important}
-}
-
-/* V13 reference-inspired independent spaceship architecture */
-#home .gaia-v7-space{isolation:isolate}
-#home .gaia-v13-window{position:absolute;top:6%;height:80%;width:27%;border:9px solid #0a1538;background:radial-gradient(circle at 36% 28%,#edabff99 0%,#6439db77 4%,transparent 24%),radial-gradient(circle at 70% 56%,#4e8fff88,transparent 24%),radial-gradient(ellipse at 50% 50%,#0d2c80,#02061b 80%);box-shadow:inset 0 0 18px #54aaff,0 0 13px #194ea5;z-index:0;pointer-events:none}
-#home .gaia-v13-window-left{left:-5%;transform:skewY(12deg);border-radius:8% 16% 28% 5%;clip-path:polygon(10% 0,100% 8%,92% 92%,0 100%)}
-#home .gaia-v13-window-right{right:-5%;transform:skewY(-12deg);border-radius:16% 8% 5% 28%;clip-path:polygon(0 8%,90% 0,100% 100%,8% 92%)}
-#home .gaia-v13-ceiling{position:absolute;top:0;left:7%;right:7%;height:9%;background:repeating-linear-gradient(90deg,#050c29 0 14%,#15316a 15% 17%,#02071d 18% 30%);clip-path:polygon(0 0,100% 0,91% 100%,9% 100%);border-bottom:3px solid #477cfa;box-shadow:0 0 25px #6c62ff;z-index:1;pointer-events:none}
-#home .gaia-v13-floor{position:absolute;bottom:0;left:5%;right:5%;height:20%;background:repeating-linear-gradient(90deg,#08122e 0 9%,#2454a1 9.5% 10%,#030a20 11% 20%),linear-gradient(#224aff,#050b21);clip-path:polygon(28% 0,72% 0,100% 100%,0 100%);box-shadow:inset 0 0 25px #6fa8ff;opacity:.75;z-index:1;pointer-events:none}
-#home .gaia-v7-stars{z-index:1;animation:gaiaV13Twinkle 7s ease-in-out infinite alternate}
-#home .gaia-v7-beam{z-index:2;opacity:.8;animation:gaiaV13Beam 4s ease-in-out infinite alternate}
-#home .gaia-v7-core{z-index:3;animation:gaiaV13Pulse 5s ease-in-out infinite}
-#home .gaia-v7-agent{z-index:4}
-#home .gaia-v7-agent:focus-visible,#home .gaia-v7-nav button:focus-visible,#home .gaia-v7-actions button:focus-visible{outline:3px solid #b5f8ff;outline-offset:2px}
-#home .gaia-v7-readiness time{display:block;font-size:clamp(15px,3vw,26px);font-weight:700;color:#e4faff;letter-spacing:.03em;margin-bottom:4px}
-#home .gaia-v7-readiness span{color:#7ce2ff}
-@keyframes gaiaV13Twinkle{from{opacity:.55}to{opacity:1}}
-@keyframes gaiaV13Beam{from{filter:brightness(.65)}to{filter:brightness(1.5)}}
-@keyframes gaiaV13Pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.23)}}
-@media(prefers-reduced-motion:reduce){#home .gaia-v7-stars,#home .gaia-v7-beam,#home .gaia-v7-core{animation:none!important}}
-@media(max-width:550px){#home .gaia-v13-window{border-width:5px}#home .gaia-v13-ceiling{height:7%}#home .gaia-v13-floor{height:18%}#home .gaia-v7-readiness time{font-size:16px}}
+@media(prefers-reduced-motion:reduce){#home .gaia-v7-core,#home .gaia-v7-stars,#home .gaia-v7-beam{animation:none}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v13-cockpit-cache";
+    const marker="gaia-v14-clean-rebuild";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -653,5 +470,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=52",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=14",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
