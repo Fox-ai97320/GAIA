@@ -660,6 +660,16 @@ box-shadow:0 0 8px #fff,0 0 28px #ff8fff,0 0 60px #c837ff,0 0 100px #2b79ff,inse
 #home .gaia-v7-input .gaia-v34-write span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
 #home .gaia-v7-input .gaia-v34-write small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
 }
+
+/* V38 hologram polish: more coherent agent labels, subtle light and resilient portrait fallback */
+#home .gaia-v7-agent{cursor:pointer!important;transition:scale .2s ease,filter .2s ease!important}
+#home .gaia-v7-agent strong{position:relative;z-index:7;max-width:120%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#home .gaia-v7-agent small{position:relative;z-index:7;max-width:130%;white-space:normal;overflow-wrap:normal}
+#home .gaia-v7-agent .gaia-v7-portrait{position:relative;isolation:isolate}
+#home .gaia-v7-agent .gaia-v7-portrait:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 7px,#9feaff11 8px 9px);mix-blend-mode:screen}
+#home .gaia-v7-agent[aria-pressed="true"] strong{color:#fff!important;border-color:#fff!important;box-shadow:0 0 14px var(--agent-color)!important}
+#home .gaia-v38-art-error{display:flex!important;align-items:center;justify-content:center;font-size:clamp(28px,6vw,60px);color:#e7faff;text-shadow:0 0 15px var(--agent-color)}
+@media(max-width:550px){#home .gaia-v7-agent small{line-height:1.15!important}#home .gaia-v7-agent strong{max-width:135%}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -815,6 +825,9 @@ document.querySelectorAll(".gaia-v7-portrait").forEach(el=>{
  const img=document.createElementNS("http://www.w3.org/2000/svg","image");
  img.setAttribute("href",gaiaArtFile);img.setAttribute("x","0");img.setAttribute("y","0");img.setAttribute("width","823");img.setAttribute("height","1536");
  svg.appendChild(img);el.replaceChildren(svg);
+ el.setAttribute("aria-hidden","true");
+ img.addEventListener("error",()=>{el.classList.add("gaia-v38-art-error");el.textContent=["◈","✧","⚙","✦","◇","✺","⬡"][i]});
+
 });
 
 const v7Ready=document.getElementById("v7Ready");if(v7Ready){const original=document.getElementById("status");const sync=()=>{v7Ready.textContent=original?original.textContent:"● Statut à vérifier"};sync();if(original)new MutationObserver(sync).observe(original,{childList:true,subtree:true,characterData:true})}
@@ -866,5 +879,5 @@ document.querySelectorAll("#home .gaia-v7-input [data-gaia-tab='chat']").forEach
  if(field)requestAnimationFrame(()=>field.focus({preventScroll:false}));
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=37",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=38",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
