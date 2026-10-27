@@ -529,6 +529,24 @@ linear-gradient(140deg,#071a48aa,#03091966)!important;border-color:#63a8ff!impor
 #home .gaia-v7-actions button small{font-size:clamp(9px,2.1vw,12px)!important;line-height:1.2!important}
 #home .gaia-v7-panel p{font-size:clamp(11px,2.4vw,14px)!important}
 }
+
+/* V31 Android framing correction: fit full command room rather than enlarging it */
+@media(max-width:550px){
+#home .gaia-v7-space{height:clamp(550px,91vw,680px)!important;min-height:0!important}
+#home .gaia-v7-core{width:34%!important;top:47%!important}
+#home .gaia-v7-agent{width:17%!important;height:20%!important}
+#home .gaia-v7-portrait{height:68%!important}
+#home .gaia-v7-agent strong{font-size:clamp(10px,2.2vw,13px)!important;padding:2px 5px!important}
+#home .gaia-v7-agent small{font-size:clamp(8px,1.8vw,10px)!important}
+#home .gaia-v7-space:after{height:16%!important}
+#home .gaia-v7-panels{gap:6px!important}
+#home .gaia-v7-panel{padding:8px!important}
+#home .gaia-v7-actions button{min-height:56px!important}
+}
+@media(min-width:551px) and (max-width:900px){
+#home .gaia-v7-space{height:730px!important}
+#home .gaia-v7-core{width:40%!important}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -730,5 +748,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=30",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=31",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
