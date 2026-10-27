@@ -34,7 +34,7 @@ export default {
     if (!message || message.length > 2500) return json({error:"Message requis (2500 caractères maximum)"}, 400, origin);
     if (!env.AI) return json({error:"Liaison Workers AI manquante"}, 503, origin);
     try {
-      const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fast", {
+      const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fp8", {
         messages: [
           {role:"system", content:"Tu es GAIA, une IA francophone utile, prudente et honnête. Profil: " + PROFILES[agent] + " Réponds en français. Si tu ignores une information, dis-le. Tu ne peux ni agir sur le téléphone ni accéder aux comptes ou au Web sans outil connecté."},
           {role:"user", content:message}
