@@ -649,6 +649,17 @@ box-shadow:0 0 8px #fff,0 0 28px #ff8fff,0 0 60px #c837ff,0 0 100px #2b79ff,inse
 #home .gaia-v7-footer{gap:5px!important;padding:7px!important}
 #home .gaia-v7-footer span{font-size:clamp(9px,2.1vw,12px)!important;padding:4px 6px!important}
 }
+
+/* V37 accessible, reliable command interface; existing cockpit remains untouched */
+#home .gaia-v7-input .gaia-v34-write{cursor:text!important}
+#home .gaia-v7-input .gaia-v34-write:hover{color:#fff!important;text-shadow:0 0 8px #6c9fff}
+#home .gaia-v7-input button:focus-visible{outline:3px solid #c5f6ff!important;outline-offset:3px}
+#home .gaia-v7-nav button[aria-current="page"]{border-color:#a9ecff!important;box-shadow:0 0 14px #539aff88!important}
+@media(max-width:550px){
+#home .gaia-v7-input .gaia-v34-write{padding:3px!important}
+#home .gaia-v7-input .gaia-v34-write span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+#home .gaia-v7-input .gaia-v34-write small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -846,9 +857,14 @@ document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener("click",()
 document.querySelectorAll("[data-gaia-quick]").forEach(b=>b.addEventListener("click",()=>{const key=b.dataset.gaiaQuick;const t=document.querySelector('[data-quick="'+key+'"]');if(t){t.click();gaiaV26SyncNav(key==="chat"?"chat":"workspace")}else{const tab=document.querySelector('[data-tab="workspace"]');if(tab){tab.click();gaiaV26SyncNav("workspace")}}}));
 document.querySelectorAll("[data-gaia-video]").forEach(b=>b.addEventListener("click",()=>{const t=document.querySelector('[data-tab="chat"]');if(t){t.click();gaiaV26SyncNav("chat")};const msg=document.getElementById("holoStatus");if(msg)msg.textContent="Vidéo : génération non configurée. Décris ton projet dans l’assistant.";const notice=document.getElementById("gaiaV22Notice");if(notice){notice.textContent="La génération vidéo n’est pas encore disponible. L’assistant peut préparer ton scénario.";notice.hidden=false;}const field=document.getElementById("prompt");if(field&&!field.value){field.value="Je souhaite préparer un projet de vidéo. Quelles options sont disponibles ?";field.dispatchEvent(new Event("input",{bubbles:true}));}if(field)field.focus();}));
 document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("click",()=>{
- document.querySelector('[data-tab="chat"]').click();
+ const tab=document.querySelector('[data-tab="chat"]');if(tab)tab.click();
+ if(typeof gaiaV26SyncNav==="function")gaiaV26SyncNav("chat");
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
+document.querySelectorAll("#home .gaia-v7-input [data-gaia-tab='chat']").forEach(b=>b.addEventListener("click",()=>{
+ const field=document.getElementById("prompt");
+ if(field)requestAnimationFrame(()=>field.focus({preventScroll:false}));
+}));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=36",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=37",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
