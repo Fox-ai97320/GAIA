@@ -220,7 +220,7 @@ body:has(#home.active) main.shell{max-width:900px;padding:0;margin:0 auto}
 #home .gaia-v7-agent-5{left:25%;top:85%;--agent-color:#41f2b8}
 #home .gaia-v7-agent-6{left:75%;top:85%;--agent-color:#ffd26c}
 #home .gaia-v7-panels{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:9px;background:linear-gradient(#060e2d,#050a23)}
-#home .gaia-v7-panel{min-width:0;border:2px solid #2e7be5;border-radius:13px;background:linear-gradient(150deg,#071a40,#100b32);padding:11px;box-shadow:0 0 12px #347bff77,inset 0 0 18px #2457c744}
+#home .gaia-v7-panel{display:block;min-width:0;border:2px solid #2e7be5;border-radius:13px;background:linear-gradient(150deg,#071a40,#100b32);padding:11px;box-shadow:0 0 12px #347bff77,inset 0 0 18px #2457c744}
 #home .gaia-v7-panel h3{display:flex;align-items:center;justify-content:space-between;font-size:16px;margin:0 0 8px}
 #home .gaia-v9-tasks h3 button{border:0;background:transparent;color:#77d9ff;font-size:11px}
 #home .gaia-v9-task{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #2c4d8b;font-size:12px}
@@ -276,7 +276,7 @@ body:has(#home.active) main.shell{max-width:900px;padding:0;margin:0 auto}
 /* Early update guard: runs before the application scripts. */
 (async function(){
   try{
-    const marker="gaia-v14-clean-rebuild";
+    const marker="gaia-v15-panel-visibility-fix";
     const old=sessionStorage.getItem("gaia_release_marker");
     if(old!==marker){
       sessionStorage.setItem("gaia_release_marker",marker);
@@ -470,5 +470,5 @@ document.querySelectorAll("[data-gaia-voice]").forEach(b=>b.addEventListener("cl
  const mic=document.getElementById("mic");if(mic)mic.click();
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=14",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=15",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
