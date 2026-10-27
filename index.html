@@ -670,6 +670,12 @@ box-shadow:0 0 8px #fff,0 0 28px #ff8fff,0 0 60px #c837ff,0 0 100px #2b79ff,inse
 #home .gaia-v7-agent[aria-pressed="true"] strong{color:#fff!important;border-color:#fff!important;box-shadow:0 0 14px var(--agent-color)!important}
 #home .gaia-v38-art-error{display:flex!important;align-items:center;justify-content:center;font-size:clamp(28px,6vw,60px);color:#e7faff;text-shadow:0 0 15px var(--agent-color)}
 @media(max-width:550px){#home .gaia-v7-agent small{line-height:1.15!important}#home .gaia-v7-agent strong{max-width:135%}}
+
+/* V39 honest status presentation and stable accessible interaction */
+#home .gaia-v7-footer span{display:inline-flex;align-items:center;gap:4px}
+#home .gaia-v7-footer b{font-variant-numeric:tabular-nums}
+#home .gaia-v7-panel button:focus-visible,#home .gaia-v7-footer button:focus-visible{outline:3px solid #d4f5ff!important;outline-offset:3px}
+@media(max-width:550px){#home .gaia-v7-footer{justify-content:center!important}#home .gaia-v7-footer span{white-space:nowrap}}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -848,7 +854,13 @@ function gaiaV9Tasks(){
 gaiaV9Tasks();window.addEventListener("storage",e=>{if(e.key==="gaia_v2_tasks")gaiaV9Tasks()});document.querySelectorAll('[data-tab="home"]').forEach(b=>b.addEventListener("click",gaiaV9Tasks));
 const v9Mem=document.getElementById("gaiaV9Memory"),v9IA=document.getElementById("gaiaV9IA");
 if(v9Mem)v9Mem.textContent=document.getElementById("dashMemory")?.textContent||"À vérifier";
-if(v9IA)v9IA.textContent="Selon connexion";
+if(v9IA){
+ const syncIA=()=>{const endpoint=localStorage.getItem("gaia_endpoint");v9IA.textContent=endpoint?"Configurée":"Non configurée";v9IA.title=endpoint?"Adresse du serveur enregistrée ; connexion non testée":"Configure un serveur IA dans Paramètres"};
+ syncIA();
+ document.getElementById("save")?.addEventListener("click",syncIA);
+ document.getElementById("clear")?.addEventListener("click",syncIA);
+ window.addEventListener("storage",e=>{if(e.key==="gaia_endpoint")syncIA()});
+}
 
 
 const gaiaV13Clock=document.getElementById("gaiaV13Clock");
@@ -879,5 +891,5 @@ document.querySelectorAll("#home .gaia-v7-input [data-gaia-tab='chat']").forEach
  if(field)requestAnimationFrame(()=>field.focus({preventScroll:false}));
 }));
 
-if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=38",{updateViaCache:"none"}).catch(()=>{});
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js?release=39",{updateViaCache:"none"}).catch(()=>{});
 </script></body></html>
