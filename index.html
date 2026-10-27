@@ -296,6 +296,47 @@ body:has(#home.active) main.shell{max-width:1100px;padding:0;margin:0 auto}
 #home .gaia-v9-task{font-size:9px;padding:7px 0}
 #home .gaia-v9-task em{font-size:8px}
 }
+
+/* GAIA V10: art-directed cockpit assembled from independent interactive elements */
+#home .gaia-v7-space{position:relative;background:
+radial-gradient(ellipse at 50% 51%,#7718db9c 0%,#2622b499 18%,transparent 48%),
+radial-gradient(ellipse at 15% 20%,#154db877,transparent 32%),
+radial-gradient(ellipse at 85% 22%,#ad47dd66,transparent 33%),
+radial-gradient(ellipse at 50% 90%,#1d7dff77,transparent 40%),#020a24}
+#home .gaia-v7-space:before{border:0;inset:0;box-shadow:inset 0 0 55px #498aff77;background:
+linear-gradient(115deg,#020b2f 0 5%,#3588ff99 5.3%,#040d29 6.2%,transparent 12% 88%,#040d29 94%,#bd6aff88 94.8%,#020b2f 95.5%),
+linear-gradient(180deg,#07122d 0 4%,#18438e 4.3%,transparent 9% 86%,#163a83 91%,#040b22 97%)}
+#home .gaia-v7-space:after{left:4%;right:4%;height:22%;bottom:0;opacity:.5;background:
+repeating-linear-gradient(90deg,#070e2a 0 18px,#245cb5 19px 21px,#050d2b 22px 50px),
+linear-gradient(#2d8aff,#030d28);clip-path:polygon(32% 0,68% 0,100% 100%,0 100%)}
+#home .gaia-v7-core{z-index:2;top:49%;border:2px solid #af78ff;background:
+radial-gradient(circle at 58% 31%,#fff8df 0%,#ffa2ef 4%,#f82bdb 9%,#9a36ff 18%,#326bff 35%,#2c139e 50%,#050e54 68%,#030924 83%);box-shadow:0 0 10px #fff,0 0 34px #e63dff,0 0 80px #3b7cff,0 0 140px #bf3bff,inset 0 0 40px #f971fa}
+#home .gaia-v7-core:before{inset:24%;transform:scaleX(3.5) rotate(-18deg);border:4px solid #ffb4f5;box-shadow:0 0 16px #fff,0 0 30px #f45dff}
+#home .gaia-v7-core:after{inset:24%;transform:scaleX(3.3) rotate(43deg);border:3px solid #70ddff;box-shadow:0 0 18px #2d8aff}
+#home .gaia-v7-agent{z-index:4;overflow:visible;background:transparent;border:0;box-shadow:none;border-radius:0;filter:drop-shadow(0 0 8px var(--agent-color))}
+#home .gaia-v7-agent:after{top:68%;height:28px;left:-4%;right:-4%;background:radial-gradient(ellipse,#0d1540,#060b29 72%);border:2px solid var(--agent-color);box-shadow:0 0 12px var(--agent-color),inset 0 0 9px var(--agent-color);z-index:-1}
+#home .gaia-v7-portrait{height:120px;border:0;border-radius:42% 42% 0 0;filter:drop-shadow(0 0 12px var(--agent-color))}
+#home .gaia-v7-portrait svg{height:100%;width:100%;display:block}
+#home .gaia-v7-agent strong{position:relative;z-index:2;margin-top:-5px;text-shadow:0 0 10px #000,0 0 9px var(--agent-color)}
+#home .gaia-v7-agent small{position:relative;z-index:2;text-shadow:0 1px 5px #000}
+#home .gaia-v7-head{border:1px solid #1c53c6}
+#home .gaia-v7-logo .gaia-v7-mark{font-size:64px;line-height:1;transform:rotate(-25deg);color:#8beaff;text-shadow:0 0 18px #754aff,0 0 26px #2979ff}
+#home .gaia-v7-panel{background:linear-gradient(150deg,#061b3d,#0c0a2e);box-shadow:inset 0 0 20px #2775ff55,0 0 12px #1c66fa66}
+#home .gaia-v7-actions button{transition:transform .15s,filter .15s}
+#home .gaia-v7-actions button:active{transform:scale(.94);filter:brightness(1.5)}
+#home .gaia-v7-nav button:active{filter:brightness(1.5)}
+@media(max-width:550px){
+#home .gaia-v7-space{height:570px}
+#home .gaia-v7-portrait{height:90px}
+#home .gaia-v7-agent{min-height:120px}
+#home .gaia-v7-agent-0{left:17%;top:29%}
+#home .gaia-v7-agent-1{left:50%;top:15%}
+#home .gaia-v7-agent-2{left:83%;top:29%}
+#home .gaia-v7-agent-3{left:14%;top:57%}
+#home .gaia-v7-agent-4{left:86%;top:57%}
+#home .gaia-v7-agent-5{left:24%;top:85%}
+#home .gaia-v7-agent-6{left:76%;top:85%}
+}
 </style>
 <script>
 /* Early update guard: runs before the application scripts. */
@@ -435,13 +476,13 @@ document.querySelectorAll('[data-tab="home"]').forEach(b=>b.addEventListener("cl
 
 const gaiaArtFile="./Screenshot_20261027_081626_ChatGPT~2.jpg";
 const gaiaArtCrops=[
-[79,445,145,150],  /* Sentinelle */
-[287,365,135,150], /* Atlas */
-[492,421,145,150], /* Forge */
-[10,688,147,155],  /* Nova */
-[552,691,147,155], /* Pixel */
-[103,946,152,160],/* Sage */
-[461,942,150,160] /* Mercure */
+[79,374,169,152],  /* Sentinelle: original reference coordinates */
+[330,269,163,148], /* Atlas */
+[605,344,177,151], /* Forge */
+[0,553,177,160],   /* Nova */
+[650,553,173,160], /* Pixel */
+[108,794,185,166], /* Sage */
+[525,792,185,166]  /* Mercure */
 ];
 document.querySelectorAll(".gaia-v7-portrait").forEach(el=>{
  const i=Number(el.dataset.v7Portrait),p=gaiaArtCrops[i];
@@ -449,7 +490,7 @@ document.querySelectorAll(".gaia-v7-portrait").forEach(el=>{
  svg.setAttribute("viewBox",p.join(" "));svg.setAttribute("preserveAspectRatio","xMidYMid slice");
  svg.setAttribute("role","img");svg.setAttribute("aria-label","Personnage "+["Sentinelle","Atlas","Forge","Nova","Pixel","Sage","Mercure"][i]);
  const img=document.createElementNS("http://www.w3.org/2000/svg","image");
- img.setAttribute("href",gaiaArtFile);img.setAttribute("x","0");img.setAttribute("y","0");img.setAttribute("width","709");img.setAttribute("height","1536");
+ img.setAttribute("href",gaiaArtFile);img.setAttribute("x","0");img.setAttribute("y","0");img.setAttribute("width","823");img.setAttribute("height","1536");
  svg.appendChild(img);el.replaceChildren(svg);
 });
 
